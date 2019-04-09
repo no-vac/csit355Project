@@ -1,6 +1,6 @@
-#Final Project for CSIT 355#
+#Final Project for CSIT 355
 
-#Group Members#
+#Group Members
 
 1. Sammy Samkough
 2. Aadil Glasswala
