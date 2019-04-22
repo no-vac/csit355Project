@@ -1,5 +1,5 @@
 <?php
-
+  require '../controllers/checkAccess.php';
 ?>
 
 <head>

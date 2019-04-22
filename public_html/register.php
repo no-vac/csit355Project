@@ -1,4 +1,10 @@
-<?php $thisPage = 'Register'; ?>
+<?php $thisPage = 'Register'; 
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        if (isset($_POST['registerBtn'])) {
+            require '../controllers/registerController.php';
+        }
+    }
+?>
 
 <html>
     <?php require '../components/header.php'; ?>
@@ -6,7 +12,7 @@
         <?php require '../components/nav.php'; ?>
         <div id="registerForm" class="container-fluid">
             <div class="jumbotron m-4">
-                <form class="text-center">
+                <form class="text-center" action="register.php" method="post">
                     <h2 class="h3 mb-3">Register</h2>
 
                     <div class="mb-3">
@@ -29,7 +35,7 @@
                         <input name="password" type="password" id="registerPassword" class="form-control" placeholder="Password" required>
                     </div>
 
-                    <button class="btn btn-lg btn-primary btn-block" type="submit">Register</button>
+                    <button name="registerBtn" class="btn btn-lg btn-primary btn-block" type="submit">Register</button>
                 </form>
             </div>
         </div>
