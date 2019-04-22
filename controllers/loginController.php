@@ -18,15 +18,7 @@
             $_SESSION['access'] = $row['access'];
             $_SESSION['logged_in'] = true;
 
-            if ($_SESSION['access'] == 'A') {
-                header("Location: index.php");
-                exit();
-            }
-            else if ($_SESSION['access'] == 'E') {
-                header("Location: index.php");
-                exit();
-            }
-            else if ($_SESSION['access'] == 'P') {
+            if ($_SESSION['logged_in'] == true) {
                 header("Location: index.php");
                 exit();
             }

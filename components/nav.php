@@ -5,6 +5,7 @@
         <span class="navbar-toggler-icon"></span>
     </button>
     
+    <!-- Administrator = A, Webmaster = W, Shop Manager = M, Customer = C -->
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <ul class="navbar-nav">
             <li <?php if ($thisPage=="Home") echo "id=\"currentpage\""; ?>><a class="nav-item nav-link" href="index.php">Home</span></a></li>
