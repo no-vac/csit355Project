@@ -1,5 +1,4 @@
 <?php
-//This file has to be updated per local db user
 $host='localhost';
 $username='test';
 $password='test';

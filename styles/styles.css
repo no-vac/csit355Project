@@ -1,5 +1,6 @@
 /* nav */
-#currentpage a {
+.active,
+.btn:hover {
   color: #333333;
   font-weight: bold;
 }

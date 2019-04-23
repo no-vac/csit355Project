@@ -9,13 +9,13 @@
     $password = mysqli_real_escape_string($mysqli, password_hash($_POST['password'], PASSWORD_BCRYPT));
     
     /* Duplicate Check */
-    $duplicateCheckQuery = $mysqli -> query("SELECT * FROM users WHERE email = '$email'") or die($mysqli->error());
+    $duplicateCheckQuery = $mysqli -> query("SELECT * FROM users WHERE email = '$email'");
     if ($duplicateCheckQuery -> num_rows > 0) {
         $_SESSION['message'] = 'E-mail already exists!';
         header("Location: error.php");
     }
     else {
-        $registerUserQuery = "INSERT INTO users (firstName, lastName, email, password)"."VALUES('$fName', '$lName', '$email', '$password')";
+        $registerUserQuery = "INSERT INTO users (fName, lName, email, password)"."VALUES('$fName', '$lName', '$email', '$password')";
         
         if ($mysqli -> query($registerUserQuery)) {
             $_SESSION['logged_in'] = true;

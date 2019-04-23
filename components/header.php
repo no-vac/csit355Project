@@ -1,4 +1,8 @@
-<?php require '../server/dbConnection.php'; require '../controllers/checkAccess.php'; ?>
+<?php
+  require '../server/dbConnection.php';
+  session_start();
+  require '../controllers/access/getAccess.php';
+?>
 
 <head>
   <title>Wallpapers Store</title>

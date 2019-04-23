@@ -1,12 +1,12 @@
 <?php
-    require '../server/db_connection.php';
+    require '../server/dbConnection.php';
 
     $email = mysqli_real_escape_string($mysqli, $_POST['email']);
     $findEmailQuery = $mysqli -> query("SELECT * FROM users WHERE email = '$email'");
 
     if ($findEmailQuery -> num_rows == 0) {
         $_SESSION['message'] = 'E-mail does not exist!';
-        header("Location: /error.php");
+        header("Location: error.php");
     }
     else {
         $row = mysqli_fetch_assoc($findEmailQuery);
@@ -24,12 +24,12 @@
             }
             else {
                 ($_SESSION['message'] = "Wrong password, try again!");
-                header("Location: ../controllers/error.php");
+                header("Location: error.php");
             } 
         }
         else {
             $_SESSION['message'] = "Wrong password, try again!";
-            header("Location: ../controllers/error.php");
+            header("Location: error.php");
         }
     }
 ?>

@@ -10,7 +10,7 @@
     - Shipped
 */
 
-INSERT INTO orders(pName, quantity, pDescription, category, price, userId, orderStatus, orderTimeStamp) VALUES(
+INSERT INTO orders(pName, quantity, pDescription, category, price, userId, orderStatus, orderTimeStamp, pImage) VALUES(
     'Wood',
     2,
     'This is a simple static wood wallpaper',
