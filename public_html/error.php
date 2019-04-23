@@ -1,4 +1,5 @@
 <?php
+    $thisPage = "Error";
     require '../components/header.php';
     session_start();
 ?>

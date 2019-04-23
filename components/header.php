@@ -1,6 +1,4 @@
-<?php
-  require '../controllers/checkAccess.php';
-?>
+<?php require '../server/dbConnection.php'; require '../controllers/checkAccess.php'; ?>
 
 <head>
   <title>Wallpapers Store</title>

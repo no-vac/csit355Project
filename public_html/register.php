@@ -1,13 +1,13 @@
-<?php $thisPage = 'Register'; 
-    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        if (isset($_POST['registerBtn'])) {
-            require '../controllers/registerController.php';
-        }
-    }
-?>
+<?php $thisPage = 'Register'; ?>
 
 <html>
-    <?php require '../components/header.php'; ?>
+    <?php require '../components/header.php';
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            if (isset($_POST['registerBtn'])) {
+                require '../controllers/registerController.php';
+            }
+        }
+    ?>
     <body>
         <?php require '../components/nav.php'; ?>
         <div id="registerForm" class="container-fluid">

@@ -1,13 +1,13 @@
-<?php $thisPage = 'Login'; 
-    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        if (isset($_POST['loginBtn'])) {
-            require '../controllers/loginController.php';
-        }
-    }
-?>
+<?php $thisPage = 'Login'; ?>
 
 <html>
-    <?php require '../components/header.php'; ?>
+    <?php require '../components/header.php'; 
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            if (isset($_POST['loginBtn'])) {
+                require '../controllers/loginController.php';
+            }
+        }
+    ?>
     <body>
         <?php require '../components/nav.php'; ?>
         <div id="loginForm" class="container-fluid">
