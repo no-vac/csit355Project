@@ -14,7 +14,7 @@
 
             <?php
                 if ($access == 'A' || $access == 'W' || $access == 'M' || $access == 'C'){
-                    echo "<li><a class=\"nav-item nav-link\" href=\"../controllers/logoutController.php\">Logout</a></li>";
+                    echo "<li><a class=\"nav-item nav-link btn\" href=\"../controllers/logoutController.php\">Logout</a></li>";
                 } else if ($access != 'A' || $access != 'W' || $access != 'M' || $access != 'C') {
                     echo '<li><a class="nav-item nav-link btn" href="login.php">Login</span></a></li>';
                     echo '<li><a class="nav-item nav-link btn" href="register.php">Register</span></a></li>';

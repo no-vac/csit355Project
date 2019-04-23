@@ -9,8 +9,9 @@
                 <h2>Welcome to the 📱 Wallpapers Store!</h2>
                 <p>Here you'll find any and all premium mobile wallpapers!</p>
                 <p>Whether you want it to move or stop, our wallpapers are personal for you!</p>
-            </div>
-            <div class="text-center">
+
+                <hr id="homePageDivider">
+
                 <div><h2>Featured Products</h2></div>
                 <div class="row">
                     <?php

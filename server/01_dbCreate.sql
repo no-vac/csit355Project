@@ -24,7 +24,7 @@ CREATE TABLE IF NOT EXISTS products(
     tax FLOAT(4,2),
     productStatus VARCHAR(30) NOT NULL,
     minOrder INT (3),
-    pImage longblob NOT NULL,
+    pImage longblob NOT NULL, /* not too sure if it should be a longblob */
     PRIMARY KEY (id)    
 ) ENGINE = InnoDB
 CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
@@ -40,7 +40,7 @@ CREATE TABLE IF NOT EXISTS orders(
     userId INT NOT NULL,
     orderStatus VARCHAR(30) NOT NULL,
     orderTimeStamp TIMESTAMP NOT NULL, 
-    pImage longblob NOT NULL,
+    pImage longblob NOT NULL, /* not too sure if it should be a longblob */
     FOREIGN KEY (id) REFERENCES products(id) ON DELETE CASCADE,
     FOREIGN KEY (userId) REFERENCES users(id) ON DELETE CASCADE,
     PRIMARY KEY (id)

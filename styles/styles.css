@@ -6,7 +6,13 @@
 }
 /* end of nav */
 
-/* login */
+/* home page */
+#homePageDivider {
+  border: 1px solid black;
+}
+/* end of home page */
+
+/* login form */
 #loginForm {
   display: -ms-flexbox;
   display: -webkit-box;
@@ -18,9 +24,9 @@
   -webkit-box-pack: center;
   justify-content: center;
 }
-/* end of login */
+/* end of login form */
 
-/* register */
+/* register form */
 #registerForm {
   display: -ms-flexbox;
   display: -webkit-box;
@@ -32,4 +38,4 @@
   -webkit-box-pack: center;
   justify-content: center;
 }
-/* end of login */
+/* end of register form */
