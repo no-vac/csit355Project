@@ -8,7 +8,7 @@
             <div class="jumbotron m-4">
                 <h2>Store 🛍️</h2>
                 <?php
-                /* ADD PRODUCTS TO TABLE
+                /* ADD PRODUCTS TO TABLE; IMPLEMENT TABS FOR EACH DIFFERENT CATEGORY (https://www.w3schools.com/bootstrap/bootstrap_tabs_pills.asp)
                     $mysqli -> set_charset("utf8");
                     $productsQuery = 'SELECT * FROM products';
 
