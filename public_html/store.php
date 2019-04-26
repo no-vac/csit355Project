@@ -7,6 +7,18 @@
         <div class="container-fluid">
             <div class="jumbotron m-4">
                 <h2>Store 🛍️</h2>
+                <?php 
+                    /* get all queries here in a loop */
+                    $sql = "SELECT pImage FROM products WHERE id='2'";
+                    $result = $mysqli -> query($sql);
+                    $row = $result -> fetch_assoc();
+    
+                    $filepath = $row['pImage'];
+                    $categories = array("All", "Static", "Live", "Multi-Screen", "Interactive", "Hybrid");
+                    $categoryIds = array("tab-all", "tab-static", "tab-live", "tab-multi-screen", "tab-interactive", "tab-hybrid");
+                    $categoryIdNavs = array("tab-all-nav", "tab-static-nav", "tab-live-nav", "tab-multi-screen-nav", "tab-interactive-nav", "tab-hybrid-nav");
+                    $categoryQueries = array("All", "Static", "Live", "Multi-Screen", "Interactive", "Hybrid");                    
+                ?>
                 <ul class="nav nav-tabs text-center" id="myTab" role="tablist">
                     <li class="nav-item">
                         <a class="nav-link active" id="tab-all-nav" data-toggle="tab" href="#tab-all" role="tab" aria-controls="tab-all" aria-selected="true">All</a>
@@ -27,14 +39,21 @@
                         <a class="nav-link" id="tab-hybrid-nav" data-toggle="tab" href="#tab-hybrid" role="tab" aria-controls="tab-hybrid" aria-selected="false">Hybrid</a>
                     </li>
                 </ul>
+
                 <div class="tab-content" id="myTabContent">
-                    <div class="tab-pane fade show active" id="tab-all" role="tabpanel" aria-labelledby="tab-all-nav">all</div>
-                    <div class="tab-pane fade" id="tab-static" role="tabpanel" aria-labelledby="tab-static-nav">static</div>
-                    <div class="tab-pane fade" id="tab-live" role="tabpanel" aria-labelledby="tab-live-nav">live</div>
-                    <div class="tab-pane fade" id="tab-multi-screen" role="tabpanel" aria-labelledby="tab-multi-screen-nav">multi screen</div>
-                    <div class="tab-pane fade" id="tab-interactive" role="tabpanel" aria-labelledby="tab-interactive-nav">interactive</div>
-                    <div class="tab-pane fade" id="tab-hybrid" role="tabpanel" aria-labelledby="tab-hybrid-nav">hybrid</div>
+                    <?php 
+                        echo "<div class=\"tab-pane fade show active\" id=\"tab-all\" role=\"tabpanel\" aria-labelledby=\"tab-all-nav\">$categoryQueries[0]</div>";
+                        for ($x = 1; $x < count($categories); $x++) {
+                            echo "<div class=\"tab-pane fade\" id=\"$categoryIds[$x]\" role=\"tabpanel\" aria-labelledby=\"$categoryIdNavs[$x]\">$categoryQueries[$x]</div>";
+                        }
+                    ?>
                 </div>
+
+                <?php 
+                    // generate all images here
+                ?>
+                <img src="<?php echo $filepath; ?>" width="175" height="200" />
+
                 <?php
                 /*
                     $mysqli -> set_charset("utf8");
@@ -80,14 +99,7 @@
                         </table>
                     </div>';
                 */
-
-                $sql = "SELECT pImage FROM products WHERE id='2'";
-                $result = $mysqli -> query($sql);
-                $row = $result -> fetch_assoc();
-
-                $filepath = $row['pImage'];
                 ?>
-                <img src="<?php echo $filepath; ?>" width="175" height="200" />
             </div>
         </div>
         <?php require '../components/footer.php'; ?>
