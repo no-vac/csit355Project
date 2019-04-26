@@ -1,9 +1,9 @@
 <?php $thisPage = 'Store'; ?>
 
 <html>
-    <?php require '../components/header.php'; ?>
+    <?php require 'components/header.php'; ?>
     <body>
-        <?php require '../components/nav.php'; ?>
+        <?php require 'components/nav.php'; ?>
         <div class="container-fluid">
             <div class="jumbotron m-4">
                 <h2>Store 🛍️</h2>
@@ -23,26 +23,19 @@
                     $categoryQueries = array($categoryQuery, $staticCategoryQuery, $liveCategoryQuery, $multiScreenCategoryQuery, $interactiveCategoryQuery, $hybridCategoryQuery);                    
                 ?>
 
-                <!-- Creating the Tabs (PUT THIS IN A FOR LOOP) -->
+                <!-- Creating the Tabs -->
                 <ul class="nav nav-tabs text-center" id="myTab" role="tablist">
                     <li class="nav-item">
-                        <a class="nav-link active" id="tab-all-nav" data-toggle="tab" href="#tab-all" role="tab" aria-controls="tab-all" aria-selected="true">All</a>
+                            <a class="nav-link active" id="tab-all-nav" data-toggle="tab" href="#tab-all" role="tab" aria-controls="tab-all" aria-selected="true">All</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" id="tab-static-nav" data-toggle="tab" href="#tab-static" role="tab" aria-controls="tab-static" aria-selected="false">Static</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" id="tab-live-nav" data-toggle="tab" href="#tab-live" role="tab" aria-controls="tab-live" aria-selected="false">Live</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" id="tab-multi-screen-nav" data-toggle="tab" href="#tab-multi-screen" role="tab" aria-controls="tab-multi-screen" aria-selected="false">Multi-Screen</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" id="tab-interactive-nav" data-toggle="tab" href="#tab-interactive" role="tab" aria-controls="tab-interactive" aria-selected="false">Interactive</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" id="tab-hybrid-nav" data-toggle="tab" href="#tab-hybrid" role="tab" aria-controls="tab-hybrid" aria-selected="false">Hybrid</a>
-                    </li>
+                    <?php 
+                        for($x = 1; $x < count($categories); $x++) {
+                            echo "
+                            <li class=\"nav-item\">
+                                <a class=\"nav-link\" id=\"$categoryIdNavs[$x]\" data-toggle=\"tab\" href=\"#$categoryIds[$x]\" role=\"tab\" aria-controls=\"$categoryIds[$x]\" aria-selected=\"true\">$categories[$x]</a>
+                            </li>";
+                        }
+                    ?>
                 </ul>
 
                 <!-- Tab Content Generation (PUT THIS IN A FOR LOOP) -->
@@ -53,43 +46,58 @@
                         while($row = $result -> fetch_assoc()){
                             $filepath = $row['pImage'];
                             $title = $row['pName'];
-                            echo "
-                            <div>
-                                <img class=\"m-2\" src=\"$filepath\" width=\"175\" height=\"200\" />
-                                <p>$title</p>
-                            </div>";
+                            include 'components/imageCard.php';
                         }
                         echo "</div>";
 
                         $result = $mysqli -> query($staticCategoryQuery);
-                        echo "<div class=\"tab-pane fade show active\" id=\"tab-static\" role=\"tabpanel\" aria-labelledby=\"tab-static-nav\">";
+                        echo "<div class=\"tab-pane fade\" id=\"tab-static\" role=\"tabpanel\" aria-labelledby=\"tab-static-nav\">";
                         while($row = $result -> fetch_assoc()){
                             $filepath = $row['pImage'];
                             $title = $row['pName'];
-                            echo "
-                            <div>
-                                <img class=\"m-2\" src=\"$filepath\" width=\"175\" height=\"200\" />
-                                <p>$title</p>
-                            </div>";
+                            include 'components/imageCard.php';
                         }
                         echo "</div>";
 
                         $result = $mysqli -> query($liveCategoryQuery);
-                        echo "<div class=\"tab-pane fade show active\" id=\"tab-live\" role=\"tabpanel\" aria-labelledby=\"tab-live-nav\">";
+                        echo "<div class=\"tab-pane fade\" id=\"tab-live\" role=\"tabpanel\" aria-labelledby=\"tab-live-nav\">";
                         while($row = $result -> fetch_assoc()){
                             $filepath = $row['pImage'];
                             $title = $row['pName'];
-                            echo "
-                            <div>
-                                <img class=\"m-2\" src=\"$filepath\" width=\"175\" height=\"200\" />
-                                <p>$title</p>
-                            </div>";
+                            include 'components/imageCard.php';
+                        }
+                        echo "</div>";
+
+                        $result = $mysqli -> query($multiScreenCategoryQuery);
+                        echo "<div class=\"tab-pane fade\" id=\"tab-multi-screen\" role=\"tabpanel\" aria-labelledby=\"tab-multi-screen-nav\">";
+                        while($row = $result -> fetch_assoc()){
+                            $filepath = $row['pImage'];
+                            $title = $row['pName'];
+                            include 'components/imageCard.php';
+                        }
+                        echo "</div>";
+
+                        $result = $mysqli -> query($interactiveCategoryQuery);
+                        echo "<div class=\"tab-pane fade\" id=\"tab-interactive\" role=\"tabpanel\" aria-labelledby=\"tab-interactive-nav\">";
+                        while($row = $result -> fetch_assoc()){
+                            $filepath = $row['pImage'];
+                            $title = $row['pName'];
+                            include 'components/imageCard.php';
+                        }
+                        echo "</div>";
+
+                        $result = $mysqli -> query($hybridCategoryQuery);
+                        echo "<div class=\"tab-pane fade\" id=\"tab-hybrid\" role=\"tabpanel\" aria-labelledby=\"tab-hybrid-nav\">";
+                        while($row = $result -> fetch_assoc()){
+                            $filepath = $row['pImage'];
+                            $title = $row['pName'];
+                            include 'components/imageCard.php';
                         }
                         echo "</div>";
                     ?>
                 </div>
             </div>
         </div>
-        <?php require '../components/footer.php'; ?>
+        <?php require 'components/footer.php'; ?>
     </body>
 </html>

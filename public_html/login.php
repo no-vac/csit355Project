@@ -1,7 +1,7 @@
 <?php $thisPage = 'Login'; ?>
 
 <html>
-    <?php require '../components/header.php'; 
+    <?php require 'components/header.php'; 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             if (isset($_POST['loginBtn'])) {
                 require '../controllers/loginController.php';
@@ -9,7 +9,7 @@
         }
     ?>
     <body>
-        <?php require '../components/nav.php'; ?>
+        <?php require 'components/nav.php'; ?>
         <div id="loginForm" class="container-fluid">
             <div class="jumbotron m-4">
                 <form class="text-center" action="login.php" method="post">
@@ -28,6 +28,6 @@
                 </form>
             </div>
         </div>
-        <?php require '../components/footer.php'; ?>
+        <?php require 'components/footer.php'; ?>
     </body>
 </html>

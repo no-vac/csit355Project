@@ -16,7 +16,8 @@ INSERT INTO orders(pName, quantity, pDescription, category, price, userId, order
     'This is a simple static wood wallpaper',
     'Static',
     20.0,
-    2,
+    1,
     'Not Shipped',
-    '2017-08-23 12:08:00'
+    '2017-08-23 12:08:00',
+    '../assets/products/hybrid/product-hybrid-4.jpg'
 );

@@ -1,9 +1,9 @@
 <?php $thisPage = 'About'; ?>
 
 <html>
-    <?php require '../components/header.php'; ?>
+    <?php require 'components/header.php'; ?>
     <body>
-        <?php require '../components/nav.php'; ?>
+        <?php require 'components/nav.php'; ?>
         <div class="container-fluid">
             <div class="jumbotron m-4" background="black">
                 <h2>About Us 🖼</h2>
@@ -21,6 +21,6 @@
                  moving and aren’t static but as well are interactive where if you touch them or perform an action they react.</p>
             </div>
         </div>
-        <?php require '../components/footer.php'; ?>
+        <?php require 'components/footer.php'; ?>
     </body>
 </html>

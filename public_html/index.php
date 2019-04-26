@@ -1,9 +1,9 @@
 <?php $thisPage = 'Home'; ?>
 
 <html>
-    <?php require '../components/header.php'; ?>
+    <?php require 'components/header.php'; ?>
     <body>
-        <?php require '../components/nav.php'; ?>
+        <?php require 'components/nav.php'; ?>
         <div class="container-fluid">
             <div class="jumbotron m-4 text-center" style="background:url(../assets/light-brown-wood.jpg); background-position: center center">
                 <div>
@@ -29,20 +29,23 @@
                 <div><h2>Featured Products</h2></div>
                 <div class="row">
                     <?php
-                        echo
-                        '<div class="col-4">
-                            item-1
-                        </div>
-                        <div class="col-4">
-                            item-2
-                        </div>
-                        <div class="col-4">
-                            item-3
-                        </div>'
+                        /* Prevent duplicates */
+                        $randNums = array();
+
+                        for($x = 0; $x < 3; $x++) {
+                            $randId = rand(1, 25);
+                            array_push($randNums, $randId);
+                            $randomProductQuery = "SELECT * FROM products WHERE id='$randId'";
+                            $result = $mysqli -> query($randomProductQuery);
+                            $row = $result -> fetch_assoc();
+                            $filepath = $row['pImage'];
+                            $title = $row['pName'];
+                            include 'components/imageCard.php';
+                        }
                     ?>
                 </div>
             </div>
         </div>
-        <?php require '../components/footer.php'; ?>
+        <?php require 'components/footer.php'; ?>
     </body>
 </html>

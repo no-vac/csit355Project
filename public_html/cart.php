@@ -1,9 +1,9 @@
 <?php $thisPage = 'Cart'; ?>
 
 <html>
-    <?php require '../components/header.php'; require '../controllers/access/checkUserAccess.php'; ?>
+    <?php require 'components/header.php'; require '../controllers/access/checkUserAccess.php'; ?>
     <body>
-        <?php require '../components/nav.php'; ?>
+        <?php require 'components/nav.php'; ?>
         <div class="container-fluid">
             <div class="jumbotron m-4">
                 <h2>Cart 🛒</h2>
@@ -14,6 +14,6 @@
                 ?>
             </div>
         </div>
-        <?php require '../components/footer.php'; ?>
+        <?php require 'components/footer.php'; ?>
     </body>
 </html>
