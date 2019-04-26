@@ -43,7 +43,7 @@ INSERT INTO products(pName, quantity, pDescription, category, price, tax, produc
     .35,
     'Inactive',
     2,
-    '../assets/products/static/product-static-1.png'  
+    '../assets/products/static/product-static-1.jpg'  
 );
 
 INSERT INTO products(pName, quantity, pDescription, category, price, tax, productStatus, minOrder, pImage) VALUES(
@@ -55,7 +55,7 @@ INSERT INTO products(pName, quantity, pDescription, category, price, tax, produc
     .35,
     'Inactive',
     2,
-    '../assets/products/static/product-static-2.png'  
+    '../assets/products/static/product-static-2.jpg'  
 );
 
 INSERT INTO products(pName, quantity, pDescription, category, price, tax, productStatus, minOrder, pImage) VALUES(
@@ -67,7 +67,7 @@ INSERT INTO products(pName, quantity, pDescription, category, price, tax, produc
     .35,
     'Active',
     2,
-    '../assets/products/static/product-static-3.png'  
+    '../assets/products/static/product-static-3.jpg'  
 );
 
 INSERT INTO products(pName, quantity, pDescription, category, price, tax, productStatus, minOrder, pImage) VALUES(
@@ -79,7 +79,7 @@ INSERT INTO products(pName, quantity, pDescription, category, price, tax, produc
     .35,
     'Inactive',
     2,
-    '../assets/products/static/product-static-4.png'  
+    '../assets/products/static/product-static-4.jpg'  
 );
 
 INSERT INTO products(pName, quantity, pDescription, category, price, tax, productStatus, minOrder, pImage) VALUES(
@@ -91,7 +91,7 @@ INSERT INTO products(pName, quantity, pDescription, category, price, tax, produc
     .25,
     'Active',
     23,
-    '../assets/products/static/product-static-5.png'  
+    '../assets/products/static/product-static-5.jpg'  
 );
 
 INSERT INTO products(pName, quantity, pDescription, category, price, tax, productStatus, minOrder, pImage) VALUES(
@@ -103,7 +103,7 @@ INSERT INTO products(pName, quantity, pDescription, category, price, tax, produc
     .25,
     'Inactive',
     23,
-    '../assets/products/static/product-multi-screen-1.png'  
+    '../assets/products/multi-screen/product-multi-screen-1.jpg'  
 );
 
 INSERT INTO products(pName, quantity, pDescription, category, price, tax, productStatus, minOrder, pImage) VALUES(
@@ -115,7 +115,7 @@ INSERT INTO products(pName, quantity, pDescription, category, price, tax, produc
     .45,
     'Inactive',
     33,
-    '../assets/products/static/product-multi-screen-2.png'  
+    '../assets/products/multi-screen/product-multi-screen-2.jpg'  
 );
 
 INSERT INTO products(pName, quantity, pDescription, category, price, tax, productStatus, minOrder, pImage) VALUES(
@@ -127,7 +127,7 @@ INSERT INTO products(pName, quantity, pDescription, category, price, tax, produc
     .25,
     'Active',
     23,
-    '../assets/products/static/product-multi-screen-3.png'  
+    '../assets/products/multi-screen/product-multi-screen-3.jpg'  
 );
 
 INSERT INTO products(pName, quantity, pDescription, category, price, tax, productStatus, minOrder, pImage) VALUES(
@@ -139,7 +139,7 @@ INSERT INTO products(pName, quantity, pDescription, category, price, tax, produc
     .85,
     'Inactive',
     5,
-    '../assets/products/static/product-multi-screen-4.png'  
+    '../assets/products/multi-screen/product-multi-screen-4.jpg'  
 );
 
 INSERT INTO products(pName, quantity, pDescription, category, price, tax, productStatus, minOrder, pImage) VALUES(
@@ -151,5 +151,5 @@ INSERT INTO products(pName, quantity, pDescription, category, price, tax, produc
     .35,
     'Active',
     3,
-    '../assets/products/static/product-multi-screen-5.png'  
+    '../assets/products/multi-screen/product-multi-screen-5.jpg'  
 );

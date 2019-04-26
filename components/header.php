@@ -2,7 +2,8 @@
   require '../server/dbConnection.php';
   session_start();
   require '../controllers/access/getAccess.php';
-?>
+  $mysqli -> set_charset("utf8");
+  ?>
 
 <head>
   <title>Wallpapers Store</title>

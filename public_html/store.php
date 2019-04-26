@@ -7,18 +7,23 @@
         <div class="container-fluid">
             <div class="jumbotron m-4">
                 <h2>Store 🛍️</h2>
+                <!-- Creating arrays that'll be used 'Tab Content Generation' -->
                 <?php 
-                    /* get all queries here in a loop */
-                    $sql = "SELECT pImage FROM products WHERE id='2'";
-                    $result = $mysqli -> query($sql);
-                    $row = $result -> fetch_assoc();
-    
-                    $filepath = $row['pImage'];
                     $categories = array("All", "Static", "Live", "Multi-Screen", "Interactive", "Hybrid");
                     $categoryIds = array("tab-all", "tab-static", "tab-live", "tab-multi-screen", "tab-interactive", "tab-hybrid");
                     $categoryIdNavs = array("tab-all-nav", "tab-static-nav", "tab-live-nav", "tab-multi-screen-nav", "tab-interactive-nav", "tab-hybrid-nav");
-                    $categoryQueries = array("All", "Static", "Live", "Multi-Screen", "Interactive", "Hybrid");                    
+ 
+                    $categoryQuery = "SELECT * FROM products";
+                    $staticCategoryQuery = "SELECT * FROM products WHERE category='Static'";
+                    $liveCategoryQuery = "SELECT * FROM products WHERE category='Live'";
+                    $multiScreenCategoryQuery = "SELECT * FROM products WHERE category='Multi-Screen'";
+                    $interactiveCategoryQuery = "SELECT * FROM products WHERE category='Interactive'";
+                    $hybridCategoryQuery = "SELECT * FROM products WHERE category='Hybrid'";                   
+
+                    $categoryQueries = array($categoryQuery, $staticCategoryQuery, $liveCategoryQuery, $multiScreenCategoryQuery, $interactiveCategoryQuery, $hybridCategoryQuery);                    
                 ?>
+
+                <!-- Creating the Tabs (PUT THIS IN A FOR LOOP) -->
                 <ul class="nav nav-tabs text-center" id="myTab" role="tablist">
                     <li class="nav-item">
                         <a class="nav-link active" id="tab-all-nav" data-toggle="tab" href="#tab-all" role="tab" aria-controls="tab-all" aria-selected="true">All</a>
@@ -40,66 +45,49 @@
                     </li>
                 </ul>
 
+                <!-- Tab Content Generation (PUT THIS IN A FOR LOOP) -->
                 <div class="tab-content" id="myTabContent">
                     <?php 
-                        echo "<div class=\"tab-pane fade show active\" id=\"tab-all\" role=\"tabpanel\" aria-labelledby=\"tab-all-nav\">$categoryQueries[0]</div>";
-                        for ($x = 1; $x < count($categories); $x++) {
-                            echo "<div class=\"tab-pane fade\" id=\"$categoryIds[$x]\" role=\"tabpanel\" aria-labelledby=\"$categoryIdNavs[$x]\">$categoryQueries[$x]</div>";
+                        $result = $mysqli -> query($categoryQuery);
+                        echo "<div class=\"tab-pane fade show active\" id=\"tab-all\" role=\"tabpanel\" aria-labelledby=\"tab-all-nav\">";
+                        while($row = $result -> fetch_assoc()){
+                            $filepath = $row['pImage'];
+                            $title = $row['pName'];
+                            echo "
+                            <div>
+                                <img class=\"m-2\" src=\"$filepath\" width=\"175\" height=\"200\" />
+                                <p>$title</p>
+                            </div>";
                         }
+                        echo "</div>";
+
+                        $result = $mysqli -> query($staticCategoryQuery);
+                        echo "<div class=\"tab-pane fade show active\" id=\"tab-static\" role=\"tabpanel\" aria-labelledby=\"tab-static-nav\">";
+                        while($row = $result -> fetch_assoc()){
+                            $filepath = $row['pImage'];
+                            $title = $row['pName'];
+                            echo "
+                            <div>
+                                <img class=\"m-2\" src=\"$filepath\" width=\"175\" height=\"200\" />
+                                <p>$title</p>
+                            </div>";
+                        }
+                        echo "</div>";
+
+                        $result = $mysqli -> query($liveCategoryQuery);
+                        echo "<div class=\"tab-pane fade show active\" id=\"tab-live\" role=\"tabpanel\" aria-labelledby=\"tab-live-nav\">";
+                        while($row = $result -> fetch_assoc()){
+                            $filepath = $row['pImage'];
+                            $title = $row['pName'];
+                            echo "
+                            <div>
+                                <img class=\"m-2\" src=\"$filepath\" width=\"175\" height=\"200\" />
+                                <p>$title</p>
+                            </div>";
+                        }
+                        echo "</div>";
                     ?>
                 </div>
-
-                <?php 
-                    // generate all images here
-                ?>
-                <img src="<?php echo $filepath; ?>" width="175" height="200" />
-
-                <?php
-                /*
-                    $mysqli -> set_charset("utf8");
-                    $productsQuery = 'SELECT * FROM products';
-
-                    $counter = 0;
-                    $value = 0;
-
-                    echo '
-                    <div class="table-responsive-sm table-responsive-md">
-                        <table class="table table-bordered table-hover" id="productsTable">
-                            <tr value='.$value.'>';
-
-                    $value++;
-                    if($result = $mysqli -> query($productsQuery)) {
-                        while ($product = $result -> fetch_assoc()) {
-                            $id = $product["id"];
-                            $pName = $product["pName"];
-                            $quantity = $product["quantity"];
-                            $pDescription = $product["pDescription"];
-                            $category = $product["category"];
-                            $price = $product["price"];
-                            $tax = $product["tax"];
-                            $productStatus = $product["productStatus"];
-                            $minOrder = $product["minOrder"];
-                            
-                            if($counter == 3) {
-                                echo '</tr>';
-                                echo '<tr value='.$value.'>';
-                                $counter = 0;
-                            }
-
-                            echo '<td id=\'product'.$value.'\'">'.$pName.'</td>';
-
-                            $value++;
-                            $counter++;
-                        }
-                    }
-                    
-                    if($counter != 3) { echo '</tr>'; }
-
-                    echo '
-                        </table>
-                    </div>';
-                */
-                ?>
             </div>
         </div>
         <?php require '../components/footer.php'; ?>
