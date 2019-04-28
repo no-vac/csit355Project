@@ -9,7 +9,7 @@
                 <h2>Profile 😎</h2>
                 <?php
                     echo '<h4 style="font-weight:normal;">Full Name: <b>'.$_SESSION['fName'].' '.$_SESSION['lName'].'</b></h4>';
-                    echo '<h4 style="font-weight:normal;">Email: <b>'.$_SESSION['email'].'</b>!</h4>';
+                    echo '<h4 style="font-weight:normal;">Email: <b>'.$_SESSION['email'].'</b></h4>';
                     echo '<h4 style="font-weight:normal;">Orders:</h4>';
                     /* query to grab all orders */
                     // getting customer's ID
