@@ -13,7 +13,7 @@
             <li><a class="nav-item nav-link btn" href="store.php">Store</a></li>
             
             <?php
-                if ($access == null) {
+                if ($access == null || $access == 'E') {
                     echo '<li><a class="nav-item nav-link btn" href="login.php">Login</a></li>';
                     echo '<li><a class="nav-item nav-link btn" href="register.php">Register</a></li>';
                 }
