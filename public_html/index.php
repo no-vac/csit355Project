@@ -38,6 +38,7 @@
                             $randomProductQuery = "SELECT * FROM products WHERE id='$randId'";
                             $result = $mysqli -> query($randomProductQuery);
                             $row = $result -> fetch_assoc();
+                            $productId = $row['id'];
                             $filepath = $row['pImage'];
                             $title = $row['pName'];
                             include 'components/imageCard.php';
