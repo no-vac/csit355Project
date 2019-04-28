@@ -1,0 +1,41 @@
+/* nav */
+.active,
+.btn:hover {
+  color: #333333;
+  font-weight: bold;
+}
+/* end of nav */
+
+/* home page */
+#homePageDivider {
+  border: 1px solid black;
+}
+/* end of home page */
+
+/* login form */
+#loginForm {
+  display: -ms-flexbox;
+  display: -webkit-box;
+  display: flex;
+  -ms-flex-align: center;
+  -ms-flex-pack: center;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  justify-content: center;
+}
+/* end of login form */
+
+/* register form */
+#registerForm {
+  display: -ms-flexbox;
+  display: -webkit-box;
+  display: flex;
+  -ms-flex-align: center;
+  -ms-flex-pack: center;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  justify-content: center;
+}
+/* end of register form */
