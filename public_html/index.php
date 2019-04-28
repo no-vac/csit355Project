@@ -39,6 +39,7 @@
                             $result = $mysqli -> query($randomProductQuery);
                             $row = $result -> fetch_assoc();
                             $filepath = $row['pImage'];
+                            $productId = $row['id'];
                             $title = $row['pName'];
                             include 'components/imageCard.php';
                         }
