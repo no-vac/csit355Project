@@ -56,6 +56,7 @@
                         $result = $mysqli -> query($categoryQuery);
                         echo "<div class=\"tab-pane fade show active\" id=\"tab-all\" role=\"tabpanel\" aria-labelledby=\"tab-all-nav\">";
                         while($row = $result -> fetch_assoc()){
+                            $productId = $row['id'];
                             $filepath = $row['pImage'];
                             $title = $row['pName'];
                             include 'components/imageCard.php';
@@ -65,6 +66,7 @@
                         $result = $mysqli -> query($staticCategoryQuery);
                         echo "<div class=\"tab-pane fade\" id=\"tab-static\" role=\"tabpanel\" aria-labelledby=\"tab-static-nav\">";
                         while($row = $result -> fetch_assoc()){
+                            $productId = $row['id'];
                             $filepath = $row['pImage'];
                             $title = $row['pName'];
                             include 'components/imageCard.php';
@@ -74,6 +76,7 @@
                         $result = $mysqli -> query($liveCategoryQuery);
                         echo "<div class=\"tab-pane fade\" id=\"tab-live\" role=\"tabpanel\" aria-labelledby=\"tab-live-nav\">";
                         while($row = $result -> fetch_assoc()){
+                            $productId = $row['id'];
                             $filepath = $row['pImage'];
                             $title = $row['pName'];
                             include 'components/imageCard.php';
@@ -83,6 +86,7 @@
                         $result = $mysqli -> query($multiScreenCategoryQuery);
                         echo "<div class=\"tab-pane fade\" id=\"tab-multi-screen\" role=\"tabpanel\" aria-labelledby=\"tab-multi-screen-nav\">";
                         while($row = $result -> fetch_assoc()){
+                            $productId = $row['id'];
                             $filepath = $row['pImage'];
                             $title = $row['pName'];
                             include 'components/imageCard.php';
@@ -92,6 +96,7 @@
                         $result = $mysqli -> query($interactiveCategoryQuery);
                         echo "<div class=\"tab-pane fade\" id=\"tab-interactive\" role=\"tabpanel\" aria-labelledby=\"tab-interactive-nav\">";
                         while($row = $result -> fetch_assoc()){
+                            $productId = $row['id'];
                             $filepath = $row['pImage'];
                             $title = $row['pName'];
                             include 'components/imageCard.php';
@@ -101,6 +106,7 @@
                         $result = $mysqli -> query($hybridCategoryQuery);
                         echo "<div class=\"tab-pane fade\" id=\"tab-hybrid\" role=\"tabpanel\" aria-labelledby=\"tab-hybrid-nav\">";
                         while($row = $result -> fetch_assoc()){
+                            $productId = $row['id'];
                             $filepath = $row['pImage'];
                             $title = $row['pName'];
                             include 'components/imageCard.php';
