@@ -5,6 +5,6 @@
         $access = $_SESSION['access'];
     }
     else {
-        $access = false;
+        $access = null;
     }
 ?>
