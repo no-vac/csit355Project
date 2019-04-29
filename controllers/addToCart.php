@@ -8,5 +8,5 @@
     array_push($cart, $productId);
     setcookie('cart_items_cookie', json_encode($cart), time()+3600, "/");
 
-    header("Location: ../public_html/cart.php");
+    header("Location: ../public_html/store.php");
 ?>
