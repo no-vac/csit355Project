@@ -1,4 +1,7 @@
-<?php $thisPage = 'Store'; ?>
+<?php $thisPage = 'Store';
+include "getCart.php";
+$cart = getCart();
+?>
 
 <html>
     <?php require 'components/header.php'; ?>

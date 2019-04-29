@@ -22,7 +22,6 @@
                 <h2>Cart 🛒</h2>
                 <?php
                 // echo $saved_cart_items;
-                
                 foreach($saved_cart_items as $productId) {
                     $result = $mysqli -> query(queryProduct($productId));
                     echo "<div class=\"tab-pane fade show active\" id=\"tab-all\" role=\"tabpanel\" aria-labelledby=\"tab-all-nav\">";
@@ -30,7 +29,7 @@
                             $productId = $row['id'];
                             $filepath = $row['pImage'];
                             $title = $row['pName'];
-                            include 'components/imageCard.php';
+                            include 'components/cartItem.php';
                         }
                         echo "</div>";
                 }
