@@ -10,7 +10,7 @@
                     </button>
                 </div>
 
-                <form class="modal-body" action="profile.php" method="post">
+                <form class="modal-body" action="../controllers/product_controllers/addProductController.php" method="post" enctype="multipart/form-data">
                     <div class="row">
                         <div class="col-md-9 mb-3">
                             <label for="addProduct_pName">Product Name</label>
@@ -116,7 +116,7 @@
                     </button>
                 </div>
 
-                <form class="modal-body" action="profile.php" method="post">
+                <form class="modal-body" action="../controllers/product_controllers/editProductController.php" method="post">
                     <div class="mb-3">
                         <label for="editProduct_item">Which Product?</label>
                         <select name="original_pNameId" class="custom-select d-block w-100" id="original_pNameId" required>
@@ -204,7 +204,7 @@
                     </button>
                 </div>
 
-                <form class="modal-body" action="profile.php" method="post">
+                <form class="modal-body" action="../controllers/product_controllers/deleteProductController.php" method="post">
                     <div class="mb-3">
                         <label for="deleteProduct_item">Which Product?</label>
                         <select name="original_pNameId" class="custom-select d-block w-100" id="original_pNameId" required>

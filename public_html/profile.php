@@ -2,15 +2,6 @@
 
 <html>
     <?php require 'components/header.php'; require '../controllers/access/checkUserAccess.php';
-        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            if (isset($_POST['addProductBtn'])) {
-                require '../controllers/product_controllers/addProductController.php';
-            } else if (isset($_POST['editProductBtn'])) {
-                require '../controllers/product_controllers/editProductController.php';
-            } else if (isset($_POST['deleteProductBtn'])) {
-                require '../controllers/product_controllers/deleteProductController.php';
-            }
-        }
     ?>
     <body>
         <?php require 'components/nav.php'; ?>
@@ -93,7 +84,7 @@
                                 <button name="deleteProductBtn" class="btn btn-danger my-2 my-sm-0" type="submit" data-toggle="modal" data-target="#deleteProductModal">Delete Product</button>
                             </nav>
                         ';
-                        require 'components/modals.php';
+                        require 'components/modals/productModals.php';
 
                         /* query to grab all products */
                         $productSql  = "SELECT * FROM `products` ORDER BY `products`.`id` DESC";
@@ -143,10 +134,55 @@
                     }
                     
                     // WEBMASTER ACCESS
-                    if ($access == 'A' || $access == 'W') {}
+                    if ($access == 'A' || $access == 'W') {
+
+                    }
                     
                     // ADMIN ACCESS
-                    if ($access == 'A') {}
+                    if ($access == 'A') {
+                        echo '<h4 style="font-weight:normal;">Users:</h4>';
+
+                        /* add, delete, edit users */
+                        echo '
+                            <nav class="navbar-expand mb-2">
+                                <button name="addUserBtn" class="btn btn-success my-2 my-sm-0 mr-2" type="submit" data-toggle="modal" data-target="#addUserModal">Add User</button>
+                                <button name="editUserBtn" class="btn btn-warning my-2 my-sm-0 mr-2" type="submit" data-toggle="modal" data-target="#editUserModal">Edit User</button>
+                                <button name="deleteUserBtn" class="btn btn-danger my-2 my-sm-0" type="submit" data-toggle="modal" data-target="#deleteUserModal">Delete User</button>
+                            </nav>
+                        ';
+                        require 'components/modals/userModals.php';
+
+                        /* query to grab all users */
+                        $userSql  = "SELECT * FROM `users` ORDER BY `users`.`id` DESC";
+                        $userResult = mysqli_query($mysqli, $userSql);
+                        echo '<div class="table-responsive-sm table-responsive-md">
+                                <table class="table table-bordered table-hover table-striped" id="usersTable"> 
+                                    <thead class="thead-dark">
+                                        <tr class=\'usersTableRow\'> 
+                                            <th scope="col" class=\'usersHeader\'>First Name</th> 
+                                            <th scope="col" class=\'usersHeader\'>Last Name</th> 
+                                            <th scope="col" class=\'usersHeader\'>Email</th>
+                                            <th scope="col" class=\'usersHeader\'>Access</th>
+                                        </tr>
+                                    </thead>
+                                <tbody>';
+                        $value = 1;
+                        while ($userRow = $userResult -> fetch_assoc()) {
+                            $fName_user = $userRow["fName"];
+                            $lName_user = $userRow["lName"];
+                            $email_user = $userRow["email"];
+                            $access_user = $userRow["access"];
+
+                            echo '<tr class=\'row'.$value.'\' value='.$value.'> 
+                                    <td scope="row" class=\'fName'.$value.'\' value='.$value.'>'.$fName_user.'</td> 
+                                    <td class=\'lName'.$value.'\' value='.$value.'>'.$lName_user.'</td> 
+                                    <td class=\'email'.$value.'\' value='.$value.'>'.$email_user.'</td> 
+                                    <td class=\'access'.$value.'\' value='.$value.'>'.$access_user.'</td>
+                                </tr>';
+                            $value++;
+                        }
+                        echo '</tbody></table></div>';
+                    }
                 ?>
             </div>
         </div>

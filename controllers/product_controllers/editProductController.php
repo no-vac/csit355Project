@@ -1,5 +1,5 @@
 <?php
-    require '../server/dbConnection.php';
+    require '../../server/dbConnection.php';
 
     $editProductSql = "UPDATE products SET ";
     $editedAttributeCount = 0;
@@ -118,5 +118,5 @@
     $editProductSql .= " WHERE id='$original_pNameId'";
     mysqli_query($mysqli, $editProductSql);
 
-    header("Location: ../public_html/profile.php")
+    header("Location: ../../public_html/profile.php")
 ?>

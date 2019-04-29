@@ -1,5 +1,5 @@
 <?php
-    require '../server/dbConnection.php';
+    require '../../server/dbConnection.php';
 
     // getting pName
     $pName = mysqli_real_escape_string($mysqli, $_POST['pName']);
@@ -39,40 +39,44 @@
         $categoryDir = 'hybrid';
     }
 
-    /*
-    $targetDir = "assets/products/$categoryDir";
-    $targetFile = $target_dir . basename($_FILES["pImage"]["name"]);
-    $uploadOk = 1;
-    $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+    if (isset($_POST["pImage"])) {
+        $file = $_FILES['file'];
 
-    // Check if image file is a actual image or fake image
-    if(isset($_POST["submit"])) {
-        $check = getimagesize($_FILES["pImage"]["tmp_name"]);
-        if($check !== false) {
-            echo "File is an image - " . $check["mime"] . ".";
-            $uploadOk = 1;
+        // getting the file information
+        $fileName = $_FILES['file']['name'];
+        $fileTmpName = $_FILES['file']['tmp_name'];
+        $fileSize = $_FILES['file']['size'];
+        $fileError = $_FILES['file']['error'];
+        $fileType = $_FILES['file']['type'];
+
+        $fileExt = explode('.', $fileName);
+        $fileActualExt = strtolower(end($fileExt));
+
+        $filesAllowed = array('jpg', 'jpeg', 'png', 'pdf');
+        $uploadResult = "";
+        if (in_array($fileActualExt, $filesAllowed)) {
+            if ($fileError === 0) {
+                if ($fileSize < 1000000) {
+                    $fileNameNew = uniqid('', true).".".$fileActualExt;
+                    //$fileDestination = "../assets/products/$categoryDir";
+                    $fileDestinationFile = "uploads/".$fileNameNew;
+
+                    move_uploaded_file($fileTmpName, $fileDestinationFile);
+                    $uploadResult = "add_product_upload_success";
+                } else {
+                    $uploadResult = "add_product_err_file_too_big";
+                }
+            } else {
+                $uploadResult = "add_product_err";
+            }
         } else {
-            echo "File is not an image.";
-            $uploadOk = 0;
+            $uploadResult = "add_product_err_file_type";
         }
     }
 
-    // Check if $uploadOk is set to 0 by an error
-    if ($uploadOk == 0) {
-        echo "Sorry, your file was not uploaded.";
-    // if everything is ok, try to upload file
-    } else {
-        if (move_uploaded_file($_FILES["pImage"]["tmp_name"], $target_file)) {
-            echo "The file ". basename( $_FILES["pImage"]["name"]). " has been uploaded.";
-        } else {
-            echo "Sorry, there was an error uploading your file.";
-        }
-    }*/
-
-    $image = addslashes(file_get_contents($_FILES['pImage']['tmp_name'])); //SQL Injection defence!
     // sql insert
-    $addProductSql = "INSERT INTO products(pName, quantity, pDescription, category, price, tax, productStatus, minOrder, pImage) VALUES('$pName', $quantity, '$pDescription', '$category', $price, $tax, '$productStatus', $minOrder, '$image')";
+    $addProductSql = "INSERT INTO products(pName, quantity, pDescription, category, price, tax, productStatus, minOrder, pImage) VALUES('$pName', $quantity, '$pDescription', '$category', $price, $tax, '$productStatus', $minOrder, '$fileDestinationFile')";
     mysqli_query($mysqli, $addProductSql);
 
-    header("Location: ../public_html/profile.php")
+    header("Location: ../../public_html/profile.php?".$uploadResult."");
 ?>
