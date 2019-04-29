@@ -42,7 +42,7 @@ $cart = getCart();
         ?>
     </div>
 </nav>
-
+<?php require '../controllers/errorHandler.php';?>
 <script>
 // Get the container element
 var btnContainer = document.getElementById("navbarNavAltMarkup");

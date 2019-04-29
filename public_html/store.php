@@ -5,7 +5,6 @@
     <?php require 'components/header.php'; ?>
     <body>
         <?php require 'components/nav.php'; ?>
-        <?php require '../controllers/errorHandler.php';?>
         <div class="container-fluid">
             <div class="jumbotron m-4">
                 <h2>Store 🛍️</h2>
