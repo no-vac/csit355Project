@@ -67,6 +67,12 @@
                     </div>
 
                     <div class="mb-3">
+                        <label for="addProduct_productStatus">Product Status</label>
+                        <input name="productStatus" type="text" class="form-control" id="productStatus" placeholder="Active" required>
+                        <div class="invalid-feedback">Please enter a valid product status.</div>
+                    </div>
+
+                    <div class="mb-3">
                         <label for="addProduct_pImage">Product Image</label>
                         <input name="pImage" type="file" class="form-control" id="pImage" required>
                     </div>
@@ -188,22 +194,29 @@
     </div>';
 
     echo
-    '<div class="modal fade" id="deleteProductModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    '<div class="modal fade" id="deleteProductModal" tabindex="-1" role="dialog" aria-labelledby="deleteProductModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
+                    <h5 class="modal-title" id="deleteProductModalTitle">Delete Product</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
-                <div class="modal-body">
-                    Delete Product Modal
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
-                </div>
+
+                <form class="modal-body" action="profile.php" method="post">
+                    <div class="mb-3">
+                        <label for="deleteProduct_item">Which Product?</label>
+                        <select name="original_pNameId" class="custom-select d-block w-100" id="original_pNameId" required>
+                            '.$productNameOptions.'
+                        </select>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button name="deleteProductBtn" type="submit" class="btn btn-primary">Delete Product</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>';
