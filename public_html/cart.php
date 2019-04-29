@@ -16,17 +16,20 @@
             <div class="jumbotron m-4">
                 <h2>Cart 🛒</h2>
                 <?php
-
-                foreach($cart as $productId) {
-                    $result = $mysqli -> query(queryProduct($productId));
-                    echo "<div class=\"tab-pane fade show active\" id=\"tab-all\" role=\"tabpanel\" aria-labelledby=\"tab-all-nav\">";
-                        while($row = $result -> fetch_assoc()){
-                            $productId = $row['id'];
-                            $filepath = $row['pImage'];
-                            $title = $row['pName'];
-                            include 'components/cartItem.php';
+                if(isset($cart[0])){
+                    foreach($cart as $productId) {
+                        $result = $mysqli -> query(queryProduct($productId));
+                        echo "<div class=\"tab-pane fade show active\" id=\"tab-all\" role=\"tabpanel\" aria-labelledby=\"tab-all-nav\">";
+                            while($row = $result -> fetch_assoc()){
+                                $productId = $row['id'];
+                                $filepath = $row['pImage'];
+                                $title = $row['pName'];
+                                include 'components/cartItem.php';
+                            }
+                            echo "</div>";
                         }
-                        echo "</div>";
+                }else{
+                    echo "Your Cart is Empty";
                 }
                 ?>
 
