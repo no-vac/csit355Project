@@ -5,11 +5,11 @@
     $quantity = mysqli_real_escape_string($mysqli, $_POST['quantity']);
     $pDescription = mysqli_real_escape_string($mysqli, $_POST['pDescription']);
     $category = mysqli_real_escape_string($mysqli, $_POST['category']);
-    $price = mysqli_real_escape_string($mysqli, $_POST['price']);
-    $tax = mysqli_real_escape_string($mysqli, $_POST['tax']);
-    $productStatus = mysqli_real_escape_string($mysqli, $_POST['productStatus']);
-    $minOrder = mysqli_real_escape_string($mysqli, $_POST['minOrder']);
+    $original_UserNameId = mysqli_real_escape_string($mysqli, $_POST['original_UserNameId']);
+    $orderStatus = mysqli_real_escape_string($mysqli, $_POST['orderStatus']);
+    $orderTimeStamp = mysqli_real_escape_string($mysqli, $_POST['orderTimeStamp']);
 
+    // getting order image
     // getting the category if item
     if ($category == "Static") {
         $categoryDir = 'static';
@@ -42,25 +42,25 @@
             if ($fileError === 0) {
                 if ($fileSize < 1000000) {
                     $fileNameNew = uniqid('', true).".".$fileActualExt;
-                    //$fileDestination = "../assets/products/$categoryDir";
+                    //$fileDestination = "../assets/orders/$categoryDir";
                     $fileDestinationFile = "uploads/".$fileNameNew;
 
                     move_uploaded_file($fileTmpName, $fileDestinationFile);
-                    $uploadResult = "add_product_upload_success";
+                    $uploadResult = "add_order_upload_success";
                 } else {
-                    $uploadResult = "add_product_err_file_too_big";
+                    $uploadResult = "add_order_err_file_too_big";
                 }
             } else {
-                $uploadResult = "add_product_err";
+                $uploadResult = "add_order_err";
             }
         } else {
-            $uploadResult = "add_product_err_file_type";
+            $uploadResult = "add_order_err_file_type";
         }
     }
 
     // sql insert
-    $addProductSql = "INSERT INTO products(pName, quantity, pDescription, category, price, tax, productStatus, minOrder, pImage) VALUES('$pName', $quantity, '$pDescription', '$category', $price, $tax, '$productStatus', $minOrder, '$fileDestinationFile')";
-    mysqli_query($mysqli, $addProductSql);
+    $addOrderSql = "INSERT INTO orders(pName, quantity, pDescription, category, price, userId, orderStatus, orderTimeStamp, pImage) VALUES('$pName', $quantity, '$pDescription', '$category', $price, $original_UserNameId, '$orderStatus', '$orderTimeStamp', '$fileDestinationFile')";
+    mysqli_query($mysqli, $addOrderSql);
 
     header("Location: ../../public_html/profile.php?".$uploadResult."");
 ?>

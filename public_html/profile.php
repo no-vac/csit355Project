@@ -12,68 +12,85 @@
                     echo '<h4 style="font-weight:normal;">Full Name: <b>'.$_SESSION['fName'].' '.$_SESSION['lName'].'</b></h4>';
                     echo '<h4 style="font-weight:normal;">Email: <b>'.$_SESSION['email'].'</b></h4>';
                     
-                    echo '<h4 style="font-weight:normal;">Orders:</h4>';
+                    if ($access == 'A' || $access == 'C') { // CUSTOMER ACCESS
+                        $access == 'C' ? $accessOut = "<h4 style=\"font-weight:normal\">My Orders:</h4>" : $accessOut = "<h4 style=\"font-weight:normal\">Orders:</h4>"; 
+                        echo $accessOut;
 
-                    /* query to grab all orders */
-                    // getting customer's ID
-                    $fName = $_SESSION['fName'];
-                    $customerIdSql = "SELECT id FROM `users` WHERE fName = '$fName'";
-                    $customerIdResult = mysqli_query($mysqli, $customerIdSql);
-                    $customerId = mysqli_fetch_assoc($customerIdResult)["id"];
-                    
-                    // querying all orders from customer ID
-                    $orderSql  = "SELECT * FROM `orders` WHERE userId = '$customerId'";
-                    $orderResultSize = mysqli_query($mysqli, $orderSql);
-                    $orderRowSize = $orderResultSize -> fetch_assoc();
-                    // $orderSize = sizeof($orderRowSize);
-
-                    if($orderRowSize > 0) {
-                        echo '<div class="table-responsive-sm table-responsive-md">
-                                <table class="table table-bordered table-hover table-striped" id="ordersTable"> 
-                                    <thead class="thead-dark">
-                                        <tr class=\'ordersTableRow\'> 
-                                            <th scope="col" class=\'ordersHeader\'>Product Name</th> 
-                                            <th scope="col" class=\'ordersHeader\'>Quantity</th> 
-                                            <th scope="col" class=\'ordersHeader\'>Description</th> 
-                                            <th scope="col" class=\'ordersHeader\'>Category</th> 
-                                            <th scope="col" class=\'ordersHeader\'>Price</th> 
-                                            <th scope="col" class=\'ordersHeader\'>Order Status</th> 
-                                            <th scope="col" class=\'ordersHeader\'>Order Time Stamp</th> 
-                                            <th scope="col" class=\'ordersHeader\'>Image</th> 
-                                        </tr>
-                                    </thead>
-                                <tbody>';
-                        $value = 1;
-                        $orderResult = mysqli_query($mysqli, $orderSql);
-                        while ($orderRow = $orderResult -> fetch_assoc()) {
-                            $pName_order = $orderRow["pName"];
-                            $quantity_order = $orderRow["quantity"];
-                            $pDescription_order = $orderRow["pDescription"];
-                            $category_order = $orderRow["category"];
-                            $price_order = $orderRow["price"];
-                            $orderStatus_order = $orderRow["orderStatus"];
-                            $orderTimeStamp_order = $orderRow["orderTimeStamp"];
-                            $pImage_order = $orderRow["pImage"];
-
-                            echo '<tr class=\'row'.$value.'\' value='.$value.'> 
-                                    <td scope="row" class=\'pName'.$value.'\' value='.$value.'>'.$pName_order.'</td> 
-                                    <td class=\'quantity'.$value.'\' value='.$value.'>'.$quantity_order.'</td> 
-                                    <td class=\'pDescription'.$value.'\' value='.$value.'>'.$pDescription_order.'</td> 
-                                    <td class=\'category'.$value.'\' value='.$value.'>'.$category_order.'</td>
-                                    <td class=\'price'.$value.'\' value='.$value.'>'.$price_order.'</td> 
-                                    <td class=\'orderStatus'.$value.'\' value='.$value.'>'.$orderStatus_order.'</td> 
-                                    <td class=\'orderTimeStamp'.$value.'\' value='.$value.'>'.$orderTimeStamp_order.'</td> 
-                                    <td class=\'pImage'.$value.'\' value='.$value.'><img class="border border-dark rounded m-2" src="'.$pImage_order.'" width="50" height="50" /></td>
-                                </tr>';
-                            $value++;
+                        if ($access == 'A') {
+                            echo '
+                            <nav class="navbar-expand mb-2">
+                                <button name="addOrderBtn" class="btn btn-success my-2 my-sm-0 mr-2" type="submit" data-toggle="modal" data-target="#addOrderModal">Add Order</button>
+                                <button name="editOrderBtn" class="btn btn-warning my-2 my-sm-0 mr-2" type="submit" data-toggle="modal" data-target="#editOrderModal">Edit Order</button>
+                                <button name="deleteOrderBtn" class="btn btn-danger my-2 my-sm-0" type="submit" data-toggle="modal" data-target="#deleteOrderModal">Delete Order</button>
+                            </nav>
+                            ';
+                            require 'components/modals/orderModals.php';
                         }
-                        echo '</tbody></table></div>';
-                    } else {
-                        echo '<h5 style="font-weight:normal;">No orders present.</h5>';
-                    }
 
-                    // SHOP MANAGER ACCESS
-                    if ($access == 'A' || $access == 'W' || $access == 'M') {
+                        /* query to grab all orders */
+                        if ($access == 'C') {
+                            // getting customer's ID
+                            $fName = $_SESSION['fName'];
+                            $customerIdSql = "SELECT id FROM `users` WHERE fName = '$fName'";
+                            $customerIdResult = mysqli_query($mysqli, $customerIdSql);
+                            $customerId = mysqli_fetch_assoc($customerIdResult)["id"];
+                            $orderSql  = "SELECT * FROM `orders` WHERE userId = '$customerId'";
+                        } else {
+                            $orderSql  = "SELECT * FROM `orders`";
+                        }
+
+                        $orderResultSize = mysqli_query($mysqli, $orderSql);
+                        $orderRowSize = $orderResultSize -> fetch_assoc();
+
+                        if($orderRowSize > 0) {
+                            echo '<div class="table-responsive-sm table-responsive-md">
+                                    <table class="table table-bordered table-hover table-striped" id="ordersTable"> 
+                                        <thead class="thead-dark">
+                                            <tr class=\'ordersTableRow\'> 
+                                                <th scope="col" class=\'ordersHeader\'>Product Name</th> 
+                                                <th scope="col" class=\'ordersHeader\'>Quantity</th> 
+                                                <th scope="col" class=\'ordersHeader\'>Description</th> 
+                                                <th scope="col" class=\'ordersHeader\'>Category</th> 
+                                                <th scope="col" class=\'ordersHeader\'>Price</th>';
+                                                if ($access = 'A') { echo '<th scope="col" class=\'ordersHeader\'>User ID</th>'; }
+                                                echo'<th scope="col" class=\'ordersHeader\'>Order Status</th> 
+                                                <th scope="col" class=\'ordersHeader\'>Order Time Stamp</th> 
+                                                <th scope="col" class=\'ordersHeader\'>Image</th> 
+                                            </tr>
+                                        </thead>
+                                    <tbody>';
+                            $value = 1;
+                            $orderResult = mysqli_query($mysqli, $orderSql);
+                            while ($orderRow = $orderResult -> fetch_assoc()) {
+                                $pName_order = $orderRow["pName"];
+                                $quantity_order = $orderRow["quantity"];
+                                $pDescription_order = $orderRow["pDescription"];
+                                $category_order = $orderRow["category"];
+                                $price_order = $orderRow["price"];
+                                $userId_order = $orderRow["userId"];
+                                $orderStatus_order = $orderRow["orderStatus"];
+                                $orderTimeStamp_order = $orderRow["orderTimeStamp"];
+                                $pImage_order = $orderRow["pImage"];
+
+                                echo '<tr class=\'row'.$value.'\' value='.$value.'> 
+                                        <td scope="row" class=\'pName'.$value.'\' value='.$value.'>'.$pName_order.'</td> 
+                                        <td class=\'quantity'.$value.'\' value='.$value.'>'.$quantity_order.'</td> 
+                                        <td class=\'pDescription'.$value.'\' value='.$value.'>'.$pDescription_order.'</td> 
+                                        <td class=\'category'.$value.'\' value='.$value.'>'.$category_order.'</td>
+                                        <td class=\'price'.$value.'\' value='.$value.'>'.$price_order.'</td>';
+                                        if ($access = 'A') { echo '<td class=\'userId'.$value.'\' value='.$value.'>'.$userId_order.'</td>'; }
+                                        echo '<td class=\'orderStatus'.$value.'\' value='.$value.'>'.$orderStatus_order.'</td> 
+                                        <td class=\'orderTimeStamp'.$value.'\' value='.$value.'>'.$orderTimeStamp_order.'</td> 
+                                        <td class=\'pImage'.$value.'\' value='.$value.'><img class="border border-dark rounded m-2" src="'.$pImage_order.'" width="50" height="50" /></td>
+                                    </tr>';
+                                $value++;
+                            }
+                            echo '</tbody></table></div>';
+                        } else {
+                            echo '<h5 style="font-weight:normal;">No orders present.</h5>';
+                        }
+                    }
+                    if ($access == 'A' || $access == 'W' || $access == 'M') { // SHOP MANAGER ACCESS
                         echo '<h4 style="font-weight:normal;">Products:</h4>';
 
                         /* add, delete, edit product */
