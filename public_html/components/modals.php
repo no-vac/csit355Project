@@ -92,7 +92,7 @@
             $pName_id = $productRow["id"];
             $pName_product = $productRow["pName"];
             
-            $productNameOptions .= '<option value='.$value.'>'.$pName_product.'</option>';
+            $productNameOptions .= '<option value='.$pName_id.'>'.$pName_product.'</option>';
             $value++;
         }
     } else {
@@ -113,7 +113,7 @@
                 <form class="modal-body" action="profile.php" method="post">
                     <div class="mb-3">
                         <label for="editProduct_item">Which Product?</label>
-                        <select name="original_pName" class="custom-select d-block w-100" id="original_pName" required>
+                        <select name="original_pNameId" class="custom-select d-block w-100" id="original_pNameId" required>
                             '.$productNameOptions.'
                         </select>
                     </div>

@@ -1,36 +1,66 @@
 <?php
     require '../server/dbConnection.php';
 
-    // GET THE VALUE FROM THIS
-    $original_pName = mysqli_real_escape_string($mysqli, $_POST['original_pName']);
+    $editProductSql = "UPDATE products SET ";
+    $editedAttributeCount = 0;
 
+    $original_pNameId = mysqli_real_escape_string($mysqli, $_POST['original_pNameId']);
+    
     // getting pName
-    if (isset($_POST["pName"]) {$pName = mysqli_real_escape_string($mysqli, $_POST['pName'])};
+    if (strlen($_POST["pName"]) > 0) {
+        $editedAttributeCount++;
+        $pName = mysqli_real_escape_string($mysqli, $_POST['pName']);
+        $editedAttributeCount > 0 ? $editProductSql .= ", pName='$pName'" : $editProductSql .= "pName='$pName'"; 
+    }
     
     // getting quantity
-    if (isset($_POST["quantity"]) {$quantity = mysqli_real_escape_string($mysqli, $_POST['quantity'])};
+    if (strlen($_POST["quantity"]) > 0) {
+        $quantity = mysqli_real_escape_string($mysqli, $_POST['quantity']);
+        $editProductSql .= "quantity=$quantity";
+    }
 
     // getting pDescription
-    if (isset($_POST["pDescription"]) {$pDescription = mysqli_real_escape_string($mysqli, $_POST['pDescription'])};
+    if (strlen($_POST["pDescription"]) > 0) {
+        $pDescription = mysqli_real_escape_string($mysqli, $_POST['pDescription']);
+        $editProductSql .= "pDescription='$pDescription', ";
+    }
 
     // getting category
-    if (isset($_POST["category"]) {$category = mysqli_real_escape_string($mysqli, $_POST['category'])};
+    if (strlen($_POST["category"]) > 0) {
+        $category = mysqli_real_escape_string($mysqli, $_POST['category']);
+        $editProductSql .= "category='$category', ";
+    }
 
     // getting price
-    if (isset($_POST["price"]) {$price = mysqli_real_escape_string($mysqli, $_POST['price'])};
+    if (strlen($_POST["price"]) > 0) {
+        $price = mysqli_real_escape_string($mysqli, $_POST['price']);
+        $editProductSql .= "price=$price, ";
+    } 
 
     // getting tax
-    if (isset($_POST["tax"]) {$tax = mysqli_real_escape_string($mysqli, $_POST['tax'])};
+    if (strlen($_POST["tax"]) > 0) {
+        $tax = mysqli_real_escape_string($mysqli, $_POST['tax']);
+        $editProductSql .= "tax=$tax, ";
+    }
 
     // getting productStatus
-    if (isset($_POST["productStatus"]) {$productStatus = mysqli_real_escape_string($mysqli, $_POST['productStatus'])};
+    if (strlen($_POST["productStatus"]) > 0) {
+        $productStatus = mysqli_real_escape_string($mysqli, $_POST['productStatus']);
+        $editProductSql .= "productStatus='$productStatus', ";
+    }
 
     // getting minOrder
-    if (isset($_POST["minOrder"]) {$minOrder = mysqli_real_escape_string($mysqli, $_POST['minOrder'])};
+    if (strlen($_POST["minOrder"]) > 0) {
+        $minOrder = mysqli_real_escape_string($mysqli, $_POST['minOrder']);
+        $editProductSql .= ", minOrder=$minOrder ";
+    } 
 
     // getting product image
-    if (isset($_POST["pImage"]) {
+    if (strlen($_POST["pImage"]) > 0) {
         // getting the category if item
+        $pImage = mysqli_real_escape_string($mysqli, $_POST['pImage']);
+        $editProductSql .= ", pImage='$pImage' "; 
+        
         if ($category == "Static") {
             $categoryDir = 'static';
         } else if ($category == "Multi-Screen") {
@@ -71,14 +101,14 @@
             } else {
                 echo "Sorry, there was an error uploading your file.";
             }
-        }*/
+        }
 
-        $image = addslashes(file_get_contents($_FILES['pImage']['tmp_name'])); //SQL Injection defence!
+        $pImage = addslashes(file_get_contents($_FILES['pImage']['tmp_name'])); */
     }
 
-    // sql insert
-    $addProductSql = "UPDATE products SET pName='$pName', quantity=$quantity, pDescription='$pDescription', category='$category', price=$price, tax=$tax, productStatus='$productStatus', minOrder=$minOrder, pImage='$image' WHERE pName='$original_pName'";
-    mysqli_query($mysqli, $addProductSql);
+    // sql update
+    $editProductSql .= " WHERE id='$original_pNameId'";
+    mysqli_query($mysqli, $editProductSql);
 
     header("Location: ../public_html/profile.php")
 ?>
