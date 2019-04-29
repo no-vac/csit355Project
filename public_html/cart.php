@@ -1,11 +1,6 @@
 <?php
-                    // read items in the cart
-                    $cookie = isset($_COOKIE['cart_items_cookie']) ? $_COOKIE['cart_items_cookie'] : "";
-                    $cookie = stripslashes($cookie);
-                    $saved_cart_items = json_decode($cookie, true);
-                    
-                    // to prevent null value
-                    $saved_cart_items=$saved_cart_items==null ? array() : $saved_cart_items;
+                    include "../controllers/getCart.php";
+                    $cart= getCart();
 
                     function queryProduct($id){
                         $query = "SELECT * FROM products WHERE id=$id";
@@ -21,8 +16,8 @@
             <div class="jumbotron m-4">
                 <h2>Cart 🛒</h2>
                 <?php
-                // echo $saved_cart_items;
-                foreach($saved_cart_items as $productId) {
+
+                foreach($cart as $productId) {
                     $result = $mysqli -> query(queryProduct($productId));
                     echo "<div class=\"tab-pane fade show active\" id=\"tab-all\" role=\"tabpanel\" aria-labelledby=\"tab-all-nav\">";
                         while($row = $result -> fetch_assoc()){

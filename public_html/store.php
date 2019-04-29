@@ -1,5 +1,5 @@
 <?php $thisPage = 'Store';
-include "getCart.php";
+include "../controllers/getCart.php";
 $cart = getCart();
 ?>
 
