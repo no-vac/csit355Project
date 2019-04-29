@@ -8,44 +8,44 @@
     
     // getting pName
     if (strlen($_POST["pName"]) > 0) {
-        $editedAttributeCount++;
         $pName = mysqli_real_escape_string($mysqli, $_POST['pName']);
         $editedAttributeCount > 0 ? $editProductSql .= ", pName='$pName'" : $editProductSql .= "pName='$pName'"; 
+        $editedAttributeCount++;
     }
     
     // getting quantity
     if (strlen($_POST["quantity"]) > 0) {
-        $editedAttributeCount++;
         $quantity = mysqli_real_escape_string($mysqli, $_POST['quantity']);
-        if ($editedAttributeCount > 0) {$editProductSql .= ", quantity='$quantity'";} else { $editProductSql .= "quantity='$quantity'"; } 
+        $editedAttributeCount > 0 ? $editProductSql .= ", quantity='$quantity'" : $editProductSql .= "quantity='$quantity'";
+        $editedAttributeCount++;
     }
 
     // getting pDescription
     if (strlen($_POST["pDescription"]) > 0) {
-        $editedAttributeCount++;
         $pDescription = mysqli_real_escape_string($mysqli, $_POST['pDescription']);
         $editedAttributeCount > 0 ? $editProductSql .= ", pDescription='$pDescription'" : $editProductSql .= "pDescription='$pDescription'"; 
+        $editedAttributeCount++;
     }
 
     // getting category
     if (strlen($_POST["category"]) > 0) {
-        $editedAttributeCount++;
         $category = mysqli_real_escape_string($mysqli, $_POST['category']);
         $editedAttributeCount > 0 ? $editProductSql .= ", category='$category'" : $editProductSql .= "category='$category'"; 
+        $editedAttributeCount++;
     }
 
     // getting price
     if (strlen($_POST["price"]) > 0) {
-        $editedAttributeCount++;
         $price = mysqli_real_escape_string($mysqli, $_POST['price']);
         $editedAttributeCount > 0 ? $editProductSql .= ", price='$price'" : $editProductSql .= "price='$price'"; 
+        $editedAttributeCount++;
     } 
 
     // getting tax
     if (strlen($_POST["tax"]) > 0) {
-        $editedAttributeCount++;
         $tax = mysqli_real_escape_string($mysqli, $_POST['tax']);
         $editedAttributeCount > 0 ? $editProductSql .= ", tax='$tax'" : $editProductSql .= "tax='$tax'"; 
+        $editedAttributeCount++;
     }
 
     // getting productStatus
@@ -57,16 +57,16 @@
 
     // getting minOrder
     if (strlen($_POST["minOrder"]) > 0) {
-        $editedAttributeCount++;
         $minOrder = mysqli_real_escape_string($mysqli, $_POST['minOrder']);
         $editedAttributeCount > 0 ? $editProductSql .= ", minOrder='$minOrder'" : $editProductSql .= "minOrder='$minOrder'"; 
+        $editedAttributeCount++;
     } 
 
     // getting product image
     if (strlen($_POST["pImage"]) > 0) {
-        $editedAttributeCount++;
         $pImage = mysqli_real_escape_string($mysqli, $_POST['pImage']);
         $editedAttributeCount > 0 ? $editProductSql .= ", pImage='$pImage'" : $editProductSql .= "pImage='$pImage'"; 
+        $editedAttributeCount++;
         
         // getting the category of item
         if ($category == "Static") {
