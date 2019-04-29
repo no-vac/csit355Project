@@ -1,3 +1,8 @@
+<?php
+include "../controllers/getCart.php";
+$cart = getCart();
+?>
+
 <nav id="pws-nav" class="navbar navbar-expand-lg navbar-light" style="background:#ccced1;">
     <a class="navbar-brand">📱 Wallpapers Store</a>
     
@@ -22,7 +27,12 @@
         
         <?php
             echo '<ul class="navbar-nav ml-auto">';
-            if ($access == 'A' || $access == 'W' || $access == 'M' || $access == 'C'){echo "<li><a class=\"nav-item nav-link btn\" href=\"cart.php\">🛒</a></li>";}
+            if(count($cart)>0){
+                $cartcount="<span class=\"badge badge-light\">".count($cart)."</span>";
+            }else{
+                $cartcount="";
+            }
+            if ($access == 'A' || $access == 'W' || $access == 'M' || $access == 'C'){echo "<li><a class=\"nav-item nav-link btn\" href=\"cart.php\">🛒".$cartcount."</a></li>";}
             if ($access == 'A'){echo "<li><a class=\"nav-item nav-link btn\" href=\"profile.php\">Profile</a></li>";}
             if ($access == 'W'){echo "<li><a class=\"nav-item nav-link btn\" href=\"profile.php\">Profile</a></li>";}
             if ($access == 'M'){echo "<li><a class=\"nav-item nav-link btn\" href=\"profile.php\">Profile</a></li>";}

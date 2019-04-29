@@ -1,6 +1,4 @@
 <?php $thisPage = 'Store';
-include "../controllers/getCart.php";
-$cart = getCart();
 ?>
 
 <html>

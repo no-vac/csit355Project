@@ -1,7 +1,4 @@
 <?php
-                    include "../controllers/getCart.php";
-                    $cart= getCart();
-
                     function queryProduct($id){
                         $query = "SELECT * FROM products WHERE id=$id";
                         return $query;
@@ -29,7 +26,9 @@
                             echo "</div>";
                         }
                 }else{
-                    echo "Your Cart is Empty";
+                    echo "<div class=\"alert alert-info\" role=\"alert\">
+                    Your Cart is empty!
+                  </div>";
                 }
                 ?>
 
