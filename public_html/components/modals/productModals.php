@@ -180,6 +180,12 @@
                     </div>
 
                     <div class="mb-3">
+                        <label for="addProduct_productStatus">Product Status</label>
+                        <input name="productStatus" type="text" class="form-control" id="productStatus" placeholder="Active">
+                        <div class="invalid-feedback">Please enter a valid product status.</div>
+                    </div>
+
+                    <div class="mb-3">
                         <label for="editProduct_pImage">Product Image</label>
                         <input name="pImage" type="file" class="form-control" id="pImage">
                     </div>

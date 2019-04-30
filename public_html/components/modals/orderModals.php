@@ -184,7 +184,7 @@
                     <div class="row">
                         <div class="col-md-6 mb-3">
                             <label for="editOrder_userItem">Which User?</label>
-                            <select name="original_UserNameId" class="custom-select d-block w-100" id="original_UserNameId">
+                            <select name="userId" class="custom-select d-block w-100" id="userId">
                                 '.$userEmailOptions.'
                             </select>
                         </div>

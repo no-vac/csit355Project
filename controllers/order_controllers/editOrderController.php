@@ -6,61 +6,53 @@
 
     $original_pNameId = mysqli_real_escape_string($mysqli, $_POST['original_pNameId']);
     
-    // getting pName
     if (strlen($_POST["pName"]) > 0) {
         $pName = mysqli_real_escape_string($mysqli, $_POST['pName']);
         $editedAttributeCount > 0 ? $editOrderSql .= ", pName='$pName'" : $editOrderSql .= "pName='$pName'"; 
         $editedAttributeCount++;
     }
     
-    // getting quantity
     if (strlen($_POST["quantity"]) > 0) {
         $quantity = mysqli_real_escape_string($mysqli, $_POST['quantity']);
         $editedAttributeCount > 0 ? $editOrderSql .= ", quantity='$quantity'" : $editOrderSql .= "quantity='$quantity'";
         $editedAttributeCount++;
     }
 
-    // getting pDescription
     if (strlen($_POST["pDescription"]) > 0) {
         $pDescription = mysqli_real_escape_string($mysqli, $_POST['pDescription']);
         $editedAttributeCount > 0 ? $editOrderSql .= ", pDescription='$pDescription'" : $editOrderSql .= "pDescription='$pDescription'"; 
         $editedAttributeCount++;
     }
 
-    // getting category
     if (strlen($_POST["category"]) > 0) {
         $category = mysqli_real_escape_string($mysqli, $_POST['category']);
         $editedAttributeCount > 0 ? $editOrderSql .= ", category='$category'" : $editOrderSql .= "category='$category'"; 
         $editedAttributeCount++;
     }
 
-    // getting price
     if (strlen($_POST["price"]) > 0) {
         $price = mysqli_real_escape_string($mysqli, $_POST['price']);
         $editedAttributeCount > 0 ? $editOrderSql .= ", price='$price'" : $editOrderSql .= "price='$price'"; 
         $editedAttributeCount++;
     } 
 
-    // getting tax
-    if (strlen($_POST["tax"]) > 0) {
-        $tax = mysqli_real_escape_string($mysqli, $_POST['tax']);
-        $editedAttributeCount > 0 ? $editOrderSql .= ", tax='$tax'" : $editOrderSql .= "tax='$tax'"; 
+    if (strlen($_POST["userId"]) > 0) {
+        $userId = mysqli_real_escape_string($mysqli, $_POST['userId']);
+        $editedAttributeCount > 0 ? $editOrderSql .= ", userId='$userId'" : $editOrderSql .= "userId='$userId'"; 
         $editedAttributeCount++;
     }
 
-    // getting orderStatus
     if (strlen($_POST["orderStatus"]) > 0) {
-        $editedAttributeCount++;
         $orderStatus = mysqli_real_escape_string($mysqli, $_POST['orderStatus']);
         $editedAttributeCount > 0 ? $editOrderSql .= ", orderStatus='$orderStatus'" : $editOrderSql .= "orderStatus='$orderStatus'"; 
+        $editedAttributeCount++;
     }
 
-    // getting minOrder
-    if (strlen($_POST["minOrder"]) > 0) {
-        $minOrder = mysqli_real_escape_string($mysqli, $_POST['minOrder']);
-        $editedAttributeCount > 0 ? $editOrderSql .= ", minOrder='$minOrder'" : $editOrderSql .= "minOrder='$minOrder'"; 
+    if (strlen($_POST["orderTimeStamp"]) > 0) {
+        $orderTimeStamp = mysqli_real_escape_string($mysqli, $_POST['orderTimeStamp']);
+        $editedAttributeCount > 0 ? $editOrderSql .= ", orderTimeStamp='$orderTimeStamp'" : $editOrderSql .= "orderTimeStamp='$orderTimeStamp'"; 
         $editedAttributeCount++;
-    } 
+    }
 
     // getting order image
     if (strlen($_POST["pImage"]) > 0) {

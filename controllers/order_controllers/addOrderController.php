@@ -5,11 +5,11 @@
     $quantity = mysqli_real_escape_string($mysqli, $_POST['quantity']);
     $pDescription = mysqli_real_escape_string($mysqli, $_POST['pDescription']);
     $category = mysqli_real_escape_string($mysqli, $_POST['category']);
+    $price = mysqli_real_escape_string($mysqli, $_POST['price']);
     $original_UserNameId = mysqli_real_escape_string($mysqli, $_POST['original_UserNameId']);
     $orderStatus = mysqli_real_escape_string($mysqli, $_POST['orderStatus']);
     $orderTimeStamp = mysqli_real_escape_string($mysqli, $_POST['orderTimeStamp']);
 
-    // getting order image
     // getting the category if item
     if ($category == "Static") {
         $categoryDir = 'static';

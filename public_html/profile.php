@@ -36,7 +36,7 @@
                             $customerId = mysqli_fetch_assoc($customerIdResult)["id"];
                             $orderSql  = "SELECT * FROM `orders` WHERE userId = '$customerId'";
                         } else {
-                            $orderSql  = "SELECT * FROM `orders`";
+                            $orderSql  = "SELECT * FROM `orders` ORDER BY `orders`.`id` DESC";
                         }
 
                         $orderResultSize = mysqli_query($mysqli, $orderSql);

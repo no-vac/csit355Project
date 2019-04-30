@@ -50,9 +50,9 @@
 
     // getting productStatus
     if (strlen($_POST["productStatus"]) > 0) {
-        $editedAttributeCount++;
         $productStatus = mysqli_real_escape_string($mysqli, $_POST['productStatus']);
         $editedAttributeCount > 0 ? $editProductSql .= ", productStatus='$productStatus'" : $editProductSql .= "productStatus='$productStatus'"; 
+        $editedAttributeCount++;
     }
 
     // getting minOrder
