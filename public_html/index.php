@@ -40,6 +40,7 @@
                             $row = $result -> fetch_assoc();
                             $productId = $row['id'];
                             $filepath = $row['pImage'];
+                            $productId = $row['id'];
                             $title = $row['pName'];
                             include 'components/imageCard.php';
                         }
