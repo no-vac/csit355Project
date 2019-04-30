@@ -25,6 +25,7 @@
                             }
                             echo "</div>";
                         }
+                    include 'components/checkout.php';
                 }else{
                     echo "<div class=\"alert alert-info\" role=\"alert\">
                     Your Cart is empty!
@@ -33,6 +34,26 @@
                 ?>
 
             </div>
+                <script>
+                (function() {
+                    $('.dropdown-menu').find('form').click(function (e) {
+                        e.stopPropagation();
+                    });
+                    'use strict';
+                    window.addEventListener('load', function() {
+                        var forms = document.getElementsByClassName('needs-validation');
+                        var validation = Array.prototype.filter.call(forms, function(form) {
+                            form.addEventListener('submit', function(event) {
+                                if (form.checkValidity() === false) {
+                                    event.preventDefault();
+                                    event.stopPropagation();
+                                }  
+                                form.classList.add('was-validated');
+                                }, false);
+                            });
+                        }, false);
+                    })();
+            </script>
         </div>
         <?php require 'components/footer.php'; ?>
     </body>
