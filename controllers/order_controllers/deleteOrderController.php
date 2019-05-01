@@ -4,8 +4,8 @@
     $original_pNameId = mysqli_real_escape_string($mysqli, $_POST['original_pNameId']);
 
     // sql delete
-    $deleteProductSql = "DELETE FROM products WHERE id='$original_pNameId'";
-    mysqli_query($mysqli, $deleteProductSql);
+    $deleteOrderSql = "DELETE FROM orders WHERE id='$original_pNameId'";
+    mysqli_query($mysqli, $deleteOrderSql);
 
     header("Location: ../../public_html/profile.php")
 ?>

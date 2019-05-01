@@ -1,10 +1,10 @@
 <?php
     require '../../server/dbConnection.php';
 
-    $original_pNameId = mysqli_real_escape_string($mysqli, $_POST['original_pNameId']);
+    $originalUser_id = mysqli_real_escape_string($mysqli, $_POST['originalUser_id']);
 
     // sql delete
-    $deleteProductSql = "DELETE FROM products WHERE id='$original_pNameId'";
+    $deleteProductSql = "DELETE FROM users WHERE id='$originalUser_id'";
     mysqli_query($mysqli, $deleteProductSql);
 
     header("Location: ../../public_html/profile.php")

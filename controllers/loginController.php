@@ -19,7 +19,7 @@
             $_SESSION['logged_in'] = true;
 
             if ($_SESSION['logged_in'] == true) {
-                header("Location: index.php");
+                header("Location: profile.php");
                 exit();
             }
             else {

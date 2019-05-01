@@ -19,7 +19,7 @@
         
         if ($mysqli -> query($registerUserQuery)) {
             $_SESSION['logged_in'] = true;
-            header("Location: index.php");
+            header("Location: profile.php");
         }
         else {
             $_SESSION['message'] = 'Unable to register!';
