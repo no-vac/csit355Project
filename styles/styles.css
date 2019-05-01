@@ -51,3 +51,6 @@
   flex-grow: 1;
   width: calc(100% * (1 / 4) - 10px - 1px);
 }
+.navbar-nav li {
+  width: 4em;
+}
