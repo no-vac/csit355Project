@@ -3,6 +3,8 @@
                         $query = "SELECT * FROM products WHERE id=$id";
                         return $query;
                     }
+                    function getquant($id){
+                    }
                 ?>
 <?php $thisPage = 'Cart'; ?>
 <html>
@@ -13,17 +15,19 @@
             <div class="jumbotron m-4">
                 <h2>Cart 🛒</h2>
                 <?php
-                if(isset($cart[0])){
-                    foreach($cart as $productId) {
-                        $result = $mysqli -> query(queryProduct($productId));
-                        echo "<div class=\"product\"><div class=\"store\">";
-                            while($row = $result -> fetch_assoc()){
-                                $productId = $row['id'];
-                                $filepath = $row['pImage'];
-                                $title = $row['pName'];
-                                include 'components/cartItem.php';
-                            }
-                            echo "</div></div>";
+                    if(count($cart)){
+                        foreach(array_column($cart, "productId") as $productId) {
+                            $result = $mysqli -> query(queryProduct($productId));
+                            echo "<div class=\"product\"><div class=\"store\">";
+                                while($row = $result -> fetch_assoc()){
+                                    $productId = $row['id'];
+                                    $filepath = $row['pImage'];
+                                    $title = $row['pName'];
+                                    $key=array_search($productId, array_column($cart, "productId"));
+                                    $quantity=$cart[$key]["quantity"];
+                                    include 'components/cartItem.php';
+                                }
+                                echo "</div></div>";
                         }
                     include 'components/checkout.php';
                 }else{
