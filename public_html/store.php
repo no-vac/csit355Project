@@ -1,5 +1,4 @@
-<?php $thisPage = 'Store';
-?>
+<?php $thisPage = 'Store'; ?>
 
 <html>
     <?php require 'components/header.php'; ?>
@@ -39,10 +38,9 @@
                     ?>
                 </ul>
 
-                <!-- Tab Content Generation (PUT THIS IN A FOR LOOP) -->
+                <!-- Tab Content Generation -->
                 <div class="tab-content" id="myTabContent">
                     <?php 
-                        // CRISTIAN'S ATTEMPT AT A FOR LOOP
                         for ($x = 0; $x < count($categories); $x++) {
                             $result = $mysqli -> query($categoryQueries[$x]);
                             if($x==0){
@@ -63,20 +61,5 @@
             </div>
         </div>
         <?php require 'components/footer.php'; ?>
-        <!-- <script>
-            $(document).ready(function(){
-                // add to cart button listener
-                $('.add-to-cart-form').on('submit', function(){
-            
-                    // info is in the table / single product layout
-                    var id = $(this).find('.product-id').text();
-                    var quantity = $(this).find('.cart-quantity').val();
-            
-                    // redirect to add_to_cart.php, with parameter values to process the request
-                    window.location.href = "add_to_cart.php?id=" + id + "&quantity=" + quantity;
-                return false;
-                });
-            });
-        </script> -->
     </body>
 </html>

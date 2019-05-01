@@ -39,6 +39,8 @@
   justify-content: center;
 }
 /* end of register form */
+
+/* store */
 .store {
   display: flex;
   font-size: 0;
@@ -54,3 +56,4 @@
 .navbar-nav li {
   width: 4em;
 }
+/* end of store */
