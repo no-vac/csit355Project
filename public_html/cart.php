@@ -16,14 +16,14 @@
                 if(isset($cart[0])){
                     foreach($cart as $productId) {
                         $result = $mysqli -> query(queryProduct($productId));
-                        echo "<div class=\"product\">";
+                        echo "<div class=\"product\"><div class=\"store\">";
                             while($row = $result -> fetch_assoc()){
                                 $productId = $row['id'];
                                 $filepath = $row['pImage'];
                                 $title = $row['pName'];
                                 include 'components/cartItem.php';
                             }
-                            echo "</div>";
+                            echo "</div></div>";
                         }
                     include 'components/checkout.php';
                 }else{

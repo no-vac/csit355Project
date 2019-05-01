@@ -42,77 +42,22 @@
                 <!-- Tab Content Generation (PUT THIS IN A FOR LOOP) -->
                 <div class="tab-content" id="myTabContent">
                     <?php 
-                        /* CRISTIAN'S ATTEMPT AT A FOR LOOP
+                        // CRISTIAN'S ATTEMPT AT A FOR LOOP
                         for ($x = 0; $x < count($categories); $x++) {
                             $result = $mysqli -> query($categoryQueries[$x]);
-                            echo "<div class=\"tab-pane fade show active\" id=\"".$categoryIds[$x]."\" role=\"tabpanel\" aria-labelledby=\"".$categoryIdNavs[$x]."\">";
+                            if($x==0){
+                                echo "<div class=\"tab-pane fade show active\" id=\"".$categoryIds[$x]."\" role=\"tabpanel\" aria-labelledby=\"".$categoryIdNavs[$x]."\">";
+                            }else{
+                                echo "<div class=\"tab-pane fade\" id=\"".$categoryIds[$x]."\" role=\"tabpanel\" aria-labelledby=\"".$categoryIdNavs[$x]."\">";
+                            }
                             while($row = $result -> fetch_assoc()) {
+                                $productId = $row['id'];
                                 $filepath = $row['pImage'];
                                 $title = $row['pName'];
                                 include 'components/imageCard.php';
-                        }   
-                        echo "</div>";
-                        }*/
-                        
-                        $result = $mysqli -> query($categoryQuery);
-                        echo "<div class=\"tab-pane store-wrapper fade show active\" id=\"tab-all\" role=\"tabpanel\" aria-labelledby=\"tab-all-nav\"><div class=\"store\">";
-                        while($row = $result -> fetch_assoc()){
-                            $productId = $row['id'];
-                            $filepath = $row['pImage'];
-                            $title = $row['pName'];
-                            include 'components/imageCard.php';
+                            }   
+                            echo "</div>";
                         }
-                        echo "</div></div>";
-
-                        $result = $mysqli -> query($staticCategoryQuery);
-                        echo "<div class=\"tab-pane store-wrapper fade\" id=\"tab-static\" role=\"tabpanel\" aria-labelledby=\"tab-static-nav\"><div class=\"store\">";
-                        while($row = $result -> fetch_assoc()){
-                            $productId = $row['id'];
-                            $filepath = $row['pImage'];
-                            $title = $row['pName'];
-                            include 'components/imageCard.php';
-                        }
-                        echo "</div></div>";
-
-                        $result = $mysqli -> query($liveCategoryQuery);
-                        echo "<div class=\"tab-pane store-wrapper fade\" id=\"tab-live\" role=\"tabpanel\" aria-labelledby=\"tab-live-nav\"><div class=\"store\">";
-                        while($row = $result -> fetch_assoc()){
-                            $productId = $row['id'];
-                            $filepath = $row['pImage'];
-                            $title = $row['pName'];
-                            include 'components/imageCard.php';
-                        }
-                        echo "</div></div>";
-
-                        $result = $mysqli -> query($multiScreenCategoryQuery);
-                        echo "<div class=\"tab-pane store-wrapper fade\" id=\"tab-multi-screen\" role=\"tabpanel\" aria-labelledby=\"tab-multi-screen-nav\"><div class=\"store\">";
-                        while($row = $result -> fetch_assoc()){    
-                            $productId = $row['id'];
-                            $filepath = $row['pImage'];
-                            $title = $row['pName'];
-                            include 'components/imageCard.php';
-                        }
-                        echo "</div></div>";
-
-                        $result = $mysqli -> query($interactiveCategoryQuery);
-                        echo "<div class=\"tab-pane store-wrapper fade\" id=\"tab-interactive\" role=\"tabpanel\" aria-labelledby=\"tab-interactive-nav\"><div class=\"store\">";
-                        while($row = $result -> fetch_assoc()){
-                            $productId = $row['id'];
-                            $filepath = $row['pImage'];
-                            $title = $row['pName'];
-                            include 'components/imageCard.php';
-                        }
-                        echo "</div></div>";
-
-                        $result = $mysqli -> query($hybridCategoryQuery);
-                        echo "<div class=\"tab-pane store-wrapper fade\" id=\"tab-hybrid\" role=\"tabpanel\" aria-labelledby=\"tab-hybrid-nav\"><div class=\"store\">";
-                        while($row = $result -> fetch_assoc()){
-                            $productId = $row['id'];
-                            $filepath = $row['pImage'];
-                            $title = $row['pName'];
-                            include 'components/imageCard.php';
-                        }
-                        echo "</div></div>";
                     ?>
                 </div>
             </div>
