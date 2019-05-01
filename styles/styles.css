@@ -2,7 +2,10 @@
 .active,
 .btn:hover {
   color: #333333;
-  font-weight: bold;
+  /* font-weight: bold; */
+}
+.btn {
+  width: auto;
 }
 /* end of nav */
 
@@ -53,7 +56,13 @@
   flex-grow: 1;
   width: calc(100% * (1 / 4) - 10px - 1px);
 }
-.navbar-nav li {
-  width: 4em;
+.prod-quantity {
+  margin-left: 1em;
+  width: 2.5em;
+  text-align: center;
+}
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  opacity: 1;
 }
 /* end of store */
