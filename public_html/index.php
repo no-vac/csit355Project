@@ -29,13 +29,14 @@
                 <div><h2>Featured Products</h2></div>
                 <div class="row">
                     <?php
-                        /* Prevent duplicates */
-                        $randNums = array();
+                        // Generate 3 unique IDs
+                        $randNums = range(1, 25);
+                        shuffle($randNums);
+                        array_slice($randNums, 0, 3);
 
+                        // display 3 random products
                         for($x = 0; $x < 3; $x++) {
-                            $randId = rand(1, 25);
-                            array_push($randNums, $randId);
-                            $randomProductQuery = "SELECT * FROM products WHERE id='$randId'";
+                            $randomProductQuery = "SELECT * FROM products WHERE id='$randNums[$x]'";
                             $result = $mysqli -> query($randomProductQuery);
                             $row = $result -> fetch_assoc();
                             $productId = $row['id'];
