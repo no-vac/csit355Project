@@ -1,8 +1,7 @@
 <?php $thisPage = 'Profile'; ?>
 
 <html>
-    <?php require 'components/header.php'; require '../controllers/access/checkUserAccess.php';
-    ?>
+    <?php require 'components/header.php'; require '../controllers/access/checkUserAccess.php'; ?>
     <body>
         <?php require 'components/nav.php'; ?>
         <div class="container-fluid">
