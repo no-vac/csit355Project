@@ -16,7 +16,7 @@
                 if(isset($cart[0])){
                     foreach($cart as $productId) {
                         $result = $mysqli -> query(queryProduct($productId));
-                        echo "<div class=\"tab-pane fade show active\" id=\"tab-all\" role=\"tabpanel\" aria-labelledby=\"tab-all-nav\">";
+                        echo "<div class=\"product\">";
                             while($row = $result -> fetch_assoc()){
                                 $productId = $row['id'];
                                 $filepath = $row['pImage'];
