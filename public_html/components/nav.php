@@ -28,9 +28,9 @@ $cart = getCart();
         <?php
             echo '<ul class="navbar-nav ml-auto">';
             if(count($cart) > 0) {
-                $cartcount="<span class=\"badge badge-light\">".count($cart)."</span>";
+                $cartcount = "<span class=\"badge badge-dark\">".count($cart)."</span>";
             } else {
-                $cartcount="";
+                $cartcount = "";
             }
             if ($access == 'A' || $access == 'W' || $access == 'M' || $access == 'C'){echo "<li><a class=\"nav-item nav-link btn\" href=\"cart.php\">🛒".$cartcount."</a></li>";}
             if ($access == 'A'){echo "<li><a class=\"nav-item nav-link btn\" href=\"profile.php\">Profile</a></li>";}
