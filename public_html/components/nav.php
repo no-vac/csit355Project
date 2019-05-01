@@ -27,10 +27,10 @@ $cart = getCart();
         
         <?php
             echo '<ul class="navbar-nav ml-auto">';
-            if(count($cart)>0){
-                $cartcount="<span class=\"badge badge-light\">".count($cart)."</span>";
-            }else{
-                $cartcount="";
+            if(count($cart) > 0) {
+                $cartcount = "<span class=\"badge badge-dark\">".count($cart)."</span>";
+            } else {
+                $cartcount = "";
             }
             if ($access == 'A' || $access == 'W' || $access == 'M' || $access == 'C'){echo "<li><a class=\"nav-item nav-link btn\" href=\"cart.php\">🛒".$cartcount."</a></li>";}
             if ($access == 'A'){echo "<li><a class=\"nav-item nav-link btn\" href=\"profile.php\">Profile</a></li>";}
@@ -42,15 +42,13 @@ $cart = getCart();
         ?>
     </div>
 </nav>
-<?php require '../controllers/errorHandler.php';?>
-<script>
-// Get the container element
-var btnContainer = document.getElementById("navbarNavAltMarkup");
 
-// Get all buttons with class="btn" inside the container
+<?php require '../controllers/errorHandler.php';?>
+
+<script>
+var btnContainer = document.getElementById("navbarNavAltMarkup");
 var btns = btnContainer.getElementsByClassName("btn");
 
-// Loop through the buttons and add the active class to the current/clicked button
 for (var i = 0; i < btns.length; i++) {
   btns[i].addEventListener("click", function() {
     var current = document.getElementsByClassName("active");

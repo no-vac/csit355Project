@@ -8,7 +8,7 @@ CREATE TABLE IF NOT EXISTS users(
     lName VARCHAR(30) NOT NULL,
     email VARCHAR(30) NOT NULL UNIQUE,
     password VARCHAR(64) NOT NULL,
-    access VARCHAR(1) DEFAULT 'P',
+    access VARCHAR(1) DEFAULT 'C',
     PRIMARY KEY (id)    
 ) ENGINE = InnoDB
 CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;

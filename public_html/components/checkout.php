@@ -1,5 +1,4 @@
 <?php
-    /* REPLACE TEST WITH PRODUCT ID FROM COOKIE VARIABLES */
     $test = 0;
     echo '
     <hr class="mb-4">
@@ -36,15 +35,15 @@
             <div class="col-md-8 mb-3">
                 <label for="country">Country</label>
                 <select class="custom-select d-block w-100" id="country" required>
-                    <option value="">Choose...</option>
-                    <?php require "components/defaultCountries.php"; ?> 
-                </select>
+                    <option value="">Choose...</option>';
+                    require "defaultCountries.php"; 
+                echo '</select>
                 <div class="invalid-feedback">Please select a valid country.</div>
             </div>
 
             <div class="col-md-4 mb-3">
                 <label for="zip">Zip</label>
-                <input type="text" class="form-control" id="zip" placeholder="" required>
+                <input type="number" class="form-control" id="zip" placeholder="" required>
                 <div class="invalid-feedback">Zip code required.</div>
             </div>
         </div>
@@ -61,7 +60,7 @@
 
             <div class="col-md-6 mb-3">
                 <label for="cc-number">Credit card number</label>
-                <input type="text" class="form-control" id="cc-number" placeholder="" required>
+                <input type="number" class="form-control" id="cc-number" placeholder="" required>
                 <div class="invalid-feedback">Credit card number is required</div>
             </div>
         </div>
@@ -69,17 +68,17 @@
         <div class="row">
             <div class="col-md-3 mb-3">
                 <label for="cc-expiration">Expiration</label>
-                <input type="text" class="form-control" id="cc-expiration" placeholder="" required>
+                <input type="number" class="form-control" id="cc-expiration" placeholder="" required>
                 <div class="invalid-feedback">Expiration date required</div>
             </div>
 
             <div class="col-md-3 mb-3">
                 <label for="cc-cvv">CVV</label>
-                <input type="text" class="form-control" id="cc-cvv" placeholder="" required>
+                <input type="number" class="form-control" id="cc-cvv" placeholder="" maxlength="3" required>
                 <div class="invalid-feedback">Security code required</div>
             </div>
         </div>
         <hr class="mb-4">
-        <button id="confirmPurchaseBtn" class="btn btn-primary btn-lg btn-block" name="confirmPurchaseBtn">Purchase Products</button>
+        <button id="confirmPurchaseBtn" class="btn btn-primary btn-lg btn-block" name="confirmPurchaseBtn">Purchase Product(s)</button>
     </form>';
 ?>
