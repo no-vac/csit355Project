@@ -7,7 +7,6 @@
     $category = mysqli_real_escape_string($mysqli, $_POST['category']);
     $price = mysqli_real_escape_string($mysqli, $_POST['price']);
     $tax = mysqli_real_escape_string($mysqli, $_POST['tax']);
-    $productStatus = mysqli_real_escape_string($mysqli, $_POST['productStatus']);
     $minOrder = mysqli_real_escape_string($mysqli, $_POST['minOrder']);
 
     // getting the category if item
@@ -59,7 +58,7 @@
     }
 
     // sql insert
-    $addProductSql = "INSERT INTO products(pName, quantity, pDescription, category, price, tax, productStatus, minOrder, pImage) VALUES('$pName', $quantity, '$pDescription', '$category', $price, $tax, '$productStatus', $minOrder, '$fileDestinationFile')";
+    $addProductSql = "INSERT INTO products(pName, quantity, pDescription, category, price, tax, minOrder, pImage) VALUES('$pName', $quantity, '$pDescription', '$category', $price, $tax, $minOrder, '$fileDestinationFile')";
     mysqli_query($mysqli, $addProductSql);
 
     header("Location: ../../public_html/profile.php?".$uploadResult."");

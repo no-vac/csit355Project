@@ -116,7 +116,6 @@
                                             <th scope="col" class=\'productsHeader\'>Category</th> 
                                             <th scope="col" class=\'productsHeader\'>Price</th> 
                                             <th scope="col" class=\'productsHeader\'>Tax</th> 
-                                            <th scope="col" class=\'productsHeader\'>Product Status</th>
                                             <th scope="col" class=\'productsHeader\'>Minimum Order</th> 
                                             <th scope="col" class=\'productsHeader\'>Image</th> 
                                         </tr>
@@ -130,7 +129,6 @@
                             $category_product = $productRow["category"];
                             $price_product = $productRow["price"];
                             $tax_product = $productRow["tax"];
-                            $productStatus = $productRow["productStatus"];
                             $minOrder_product = $productRow["minOrder"];
                             $pImage_product = $productRow["pImage"];
 
@@ -141,7 +139,6 @@
                                     <td class=\'category'.$value.'\' value='.$value.'>'.$category_product.'</td>
                                     <td class=\'price'.$value.'\' value='.$value.'>'.$price_product.'</td> 
                                     <td class=\'tax'.$value.'\' value='.$value.'>'.$tax_product.'</td> 
-                                    <td class=\'productStatus'.$value.'\' value='.$value.'>'.$productStatus.'</td> 
                                     <td class=\'minOrder'.$value.'\' value='.$value.'>'.$minOrder_product.'</td> 
                                     <td class=\'pImage'.$value.'\' value='.$value.'><img class="border border-dark rounded m-2" src="'.$pImage_product.'" width="50" height="50" /></td>
                                 </tr>';

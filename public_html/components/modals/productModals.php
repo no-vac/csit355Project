@@ -67,12 +67,6 @@
                     </div>
 
                     <div class="mb-3">
-                        <label for="addProduct_productStatus">Product Status</label>
-                        <input name="productStatus" type="text" class="form-control" id="productStatus" placeholder="Active" required>
-                        <div class="invalid-feedback">Please enter a valid product status.</div>
-                    </div>
-
-                    <div class="mb-3">
                         <label for="addProduct_pImage">Product Image</label>
                         <input name="pImage" type="file" class="form-control" id="pImage" required>
                     </div>
@@ -177,12 +171,6 @@
                             <input name="minOrder" type="number" class="form-control" id="minOrder" placeholder="1">
                             <div class="invalid-feedback">Please enter a valid minimum order.</div>
                         </div>
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="addProduct_productStatus">Product Status</label>
-                        <input name="productStatus" type="text" class="form-control" id="productStatus" placeholder="Active">
-                        <div class="invalid-feedback">Please enter a valid product status.</div>
                     </div>
 
                     <div class="mb-3">

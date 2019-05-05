@@ -48,13 +48,6 @@
         $editedAttributeCount++;
     }
 
-    // getting productStatus
-    if (strlen($_POST["productStatus"]) > 0) {
-        $productStatus = mysqli_real_escape_string($mysqli, $_POST['productStatus']);
-        $editedAttributeCount > 0 ? $editProductSql .= ", productStatus='$productStatus'" : $editProductSql .= "productStatus='$productStatus'"; 
-        $editedAttributeCount++;
-    }
-
     // getting minOrder
     if (strlen($_POST["minOrder"]) > 0) {
         $minOrder = mysqli_real_escape_string($mysqli, $_POST['minOrder']);
