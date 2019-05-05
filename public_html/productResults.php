@@ -10,6 +10,7 @@
             $searchQuery = $mysqli -> query("SELECT pName FROM products WHERE pName = '$searchItem'");
 
             $searchResult = $mysqli -> query($searchQuery);
+            
             echo "<div>";
             while($searchRow = $searchResult -> fetch_assoc()) {
                 $productId = $searchRow['id'];
