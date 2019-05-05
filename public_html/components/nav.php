@@ -27,6 +27,11 @@ $cart = getCart();
         
         <?php
             echo '<ul class="navbar-nav ml-auto">';
+            echo '
+            <form class="text-center" action="productResults.php" method="post">
+                <input id="searchInput" type="text" placeholder="Search.." name="search">
+                <button id="searchBtnIcon" type="submit"><i class="fa fa-search"></i></button>
+            </form>';
             if(count($cart) > 0) {
                 $cartcount = "<span class=\"badge badge-dark\">".count($cart)."</span>";
             } else {
@@ -57,3 +62,41 @@ for (var i = 0; i < btns.length; i++) {
   });
 }
 </script>
+
+<style>
+    #searchInput {
+    padding: 6px;
+    margin-top: 8px;
+    font-size: 17px;
+    border: none;
+    }
+
+    #searchBtnIcon {
+    padding: 6px 10px;
+    margin-top: 8px;
+    margin-right: 16px;
+    background: #ddd;
+    font-size: 17px;
+    border: none;
+    cursor: pointer;
+    }
+
+    #searchBtnIcon:hover {
+    background: #878787;
+    }
+
+    @media screen and (max-width: 600px) {
+    .searchInput,
+    .searchBtnIcon {
+        float: left;
+        display: block;
+        text-align: left;
+        width: 100%;
+        margin: 0;
+        padding: 14px;
+    }
+    .searchInput {
+        border: 1px solid #878787;
+    }
+    }
+</style>
