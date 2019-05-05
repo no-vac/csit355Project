@@ -28,24 +28,118 @@
 
                 <div><h2>Featured Products</h2></div>
                 <div class="row">
-                    <?php
-                        // Generate 3 unique IDs
-                        $randNums = range(1, 25);
-                        shuffle($randNums);
-                        array_slice($randNums, 0, 3);
+                    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel" style="width: 100%">
+                      <div class="carousel-inner">
+                        <div class="carousel-item active">
+                          <?php
+                            // Generate 3 unique IDs
+                            $randNums = range(11, 15);
+                            shuffle($randNums);
+                            array_slice($randNums, 0, 2);
 
-                        // display 3 random products
-                        for($x = 0; $x < 3; $x++) {
-                            $randomProductQuery = "SELECT * FROM products WHERE id='$randNums[$x]'";
-                            $result = $mysqli -> query($randomProductQuery);
-                            $row = $result -> fetch_assoc();
-                            $productId = $row['id'];
-                            $filepath = $row['pImage'];
-                            $productId = $row['id'];
-                            $title = $row['pName'];
-                            include 'components/imageCard.php';
-                        }
-                    ?>
+                            // display 3 random products
+                            for($x = 0; $x < 4; $x++) {
+                                $randomProductQuery = "SELECT * FROM products WHERE id='$randNums[$x]'";
+                                $result = $mysqli -> query($randomProductQuery);
+                                $row = $result -> fetch_assoc();
+                                $productId = $row['id'];
+                                $filepath = $row['pImage'];
+                                $productId = $row['id'];
+                                $title = $row['pName'];
+                                include 'components/imageCard.php';
+                            }
+                        ?>
+                        </div>
+                        <div class="carousel-item">
+                            <?php
+                                // Generate 3 unique IDs
+                                $randNums = range(1, 5);
+                                shuffle($randNums);
+                                array_slice($randNums, 0, 2);
+
+                                // display 3 random products
+                                for($x = 0; $x < 4; $x++) {
+                                    $randomProductQuery = "SELECT * FROM products WHERE id='$randNums[$x]'";
+                                    $result = $mysqli -> query($randomProductQuery);
+                                    $row = $result -> fetch_assoc();
+                                    $productId = $row['id'];
+                                    $filepath = $row['pImage'];
+                                    $productId = $row['id'];
+                                    $title = $row['pName'];
+                                    include 'components/imageCard.php';
+                                }
+                          ?>
+                        </div>
+                        <div class="carousel-item">
+                            <?php
+                              // Generate 3 unique IDs
+                                $randNums = range(6, 10);
+                                shuffle($randNums);
+                                array_slice($randNums, 0, 2);
+
+                                // display 3 random products
+                                for($x = 0; $x < 4; $x++) {
+                                    $randomProductQuery = "SELECT * FROM products WHERE id='$randNums[$x]'";
+                                    $result = $mysqli -> query($randomProductQuery);
+                                    $row = $result -> fetch_assoc();
+                                    $productId = $row['id'];
+                                    $filepath = $row['pImage'];
+                                    $productId = $row['id'];
+                                    $title = $row['pName'];
+                                    include 'components/imageCard.php';
+                                }
+                          ?>
+                        </div>
+                        <div class="carousel-item">
+                            <?php
+                              // Generate 3 unique IDs
+                                $randNums = range(16, 20);
+                                shuffle($randNums);
+                                array_slice($randNums, 0, 2);
+
+                                // display 3 random products
+                                for($x = 0; $x < 4; $x++) {
+                                    $randomProductQuery = "SELECT * FROM products WHERE id='$randNums[$x]'";
+                                    $result = $mysqli -> query($randomProductQuery);
+                                    $row = $result -> fetch_assoc();
+                                    $productId = $row['id'];
+                                    $filepath = $row['pImage'];
+                                    $productId = $row['id'];
+                                    $title = $row['pName'];
+                                    include 'components/imageCard.php';
+                                }
+                          ?>
+                        </div>
+                        <div class="carousel-item">
+                            <?php
+                              // Generate 3 unique IDs
+                                $randNums = range(21, 25);
+                                shuffle($randNums);
+                                array_slice($randNums, 0, 2);
+
+                                // display 3 random products
+                                for($x = 0; $x < 4; $x++) {
+                                    $randomProductQuery = "SELECT * FROM products WHERE id='$randNums[$x]'";
+                                    $result = $mysqli -> query($randomProductQuery);
+                                    $row = $result -> fetch_assoc();
+                                    $productId = $row['id'];
+                                    $filepath = $row['pImage'];
+                                    $productId = $row['id'];
+                                    $title = $row['pName'];
+                                    include 'components/imageCard.php';
+                                }
+                          ?>
+                        </div>
+                      </div>
+                      <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                      </a>
+                      <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                      </a>
+                    </div>
                 </div>
             </div>
         </div>
