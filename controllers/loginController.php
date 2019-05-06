@@ -16,6 +16,7 @@
             $_SESSION['lName'] = $row['lName'];
             $_SESSION['email'] = $row['email'];
             $_SESSION['access'] = $row['access'];
+            $_SESSION['uid'] = $row['id'];
             $_SESSION['logged_in'] = true;
 
             if ($_SESSION['logged_in'] == true) {

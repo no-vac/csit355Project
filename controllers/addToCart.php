@@ -1,6 +1,7 @@
 <?php
     require '../server/dbConnection.php';
     include "getCart.php";
+    session_start();
 
     function _exists($object, $property, $item){
         foreach ($object->$property as $index){
@@ -24,7 +25,7 @@
         header("Location: ../public_html/store.php?err=1");
     } else {
         array_push($cart, $newitem);
-        setcookie('cart_items_cookie', json_encode($cart), time()+3600, "/");
+        setcookie('uid:'.$_SESSION['uid'], json_encode($cart), time()+3600, "/");
         header("Location: ../public_html/store.php");
     }
 ?>
