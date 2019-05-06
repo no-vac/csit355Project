@@ -5,7 +5,7 @@
     <body>
         <?php require 'components/nav.php'; ?>
         <div class="container-fluid">
-            <div class="jumbotron m-4" background="black">
+            <div class="jumbotron m-4">
                 <h2>About Us 🖼</h2>
                 <p>At our business, we develop websites for your everyday people for affordable pricing. We have a simple 
                 business model with no scams, and are upfront about what we charge. We are especially known for our cheap 

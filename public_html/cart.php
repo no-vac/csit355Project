@@ -30,10 +30,10 @@
                                 echo "</div></div>";
                         }
                     include 'components/checkout.php';
-                }else{
+                } else {
                     echo "<div class=\"alert alert-info\" role=\"alert\">
                     Your Cart is empty!
-                  </div>";
+                    </div>";
                 }
                 ?>
 
