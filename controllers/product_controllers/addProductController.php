@@ -14,7 +14,7 @@
         $categoryDir = 'static';
     } else if ($category == "Multi-Screen") {
         $categoryDir = 'multi-screen';
-    } else if ($category == "live") {
+    } else if ($category == "Live") {
         $categoryDir = 'live';
     } else if ($category == "Interactive") {
         $categoryDir = 'interactive';
