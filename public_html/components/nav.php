@@ -29,7 +29,7 @@ $cart = getCart();
             echo '<ul class="navbar-nav ml-auto">';
             echo '
             <form class="text-center" action="productResults.php" method="post">
-                <input id="searchInput" type="text" placeholder="Search.." name="search">
+                <input id="searchInput" type="text" placeholder="Search..." name="search">
                 <button id="searchBtnIcon" type="submit"><i class="fa fa-search"></i></button>
             </form>';
             if(count($cart) > 0) {

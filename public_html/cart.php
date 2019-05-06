@@ -13,7 +13,7 @@
             <div class="jumbotron m-4">
                 <h2>Cart 🛒</h2>
                 <?php
-                if(isset($cart[0])){
+                if(isset($cart[0])) {
                     foreach($cart as $productId) {
                         $result = $mysqli -> query(queryProduct($productId));
                         echo "<div class=\"product\"><div class=\"store\">";
@@ -26,10 +26,10 @@
                             echo "</div></div>";
                         }
                     include 'components/checkout.php';
-                }else{
+                } else {
                     echo "<div class=\"alert alert-info\" role=\"alert\">
                     Your Cart is empty!
-                  </div>";
+                    </div>";
                 }
                 ?>
 
