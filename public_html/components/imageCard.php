@@ -5,7 +5,11 @@
                 <input type=\"hidden\" name=\"productId\" value=\"$productId\">
                 <img class=\"border border-dark rounded m-2\" src=\"$filepath\" width=\"200\" height=\"200\" />
                 <h4>$title</h4>";
-                if ($access != null) { echo "<button name=\"addToCartBtn\" class=\"btn btn-sm btn-primary\" type=\"submit\">Add to Cart</button>"; }
-            echo "</form>
-        </div>";
+                if ($access != null) { 
+                    echo "
+                    <button name=\"addToCartBtn\" class=\"btn btn-sm btn-primary \" type=\"submit\">Add to Cart</button>
+                    <input class=\"prod-quantity align-middle\" name=\"quantity\" type=\"number\" id=\"1\" value=\"1\" min=\"1\" max=\"10\"/>
+                    ";
+                }
+    echo "</form></div>";
 ?>
