@@ -31,9 +31,7 @@
                         }
                     include 'components/checkout.php';
                 } else {
-                    echo "<div class=\"alert alert-info\" role=\"alert\">
-                    Your Cart is empty!
-                    </div>";
+                    echo "<div class=\"mt-4 alert alert-info\" role=\"alert\">Your Cart is empty!</div>";
                 }
                 ?>
 
