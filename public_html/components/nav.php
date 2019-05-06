@@ -38,6 +38,7 @@ $cart = getCart();
                 $cartcount = "";
             }
             if ($access == 'A' || $access == 'W' || $access == 'M' || $access == 'C'){echo "<li><a class=\"nav-item nav-link btn\" href=\"cart.php\">🛒".$cartcount."</a></li>";}
+            if ($access == 'A' || $access == 'W') {echo "<li><a class=\"nav-item nav-link btn\" href=\"statistics.php\">Statistics</a></li>";}
             if ($access == 'A'){echo "<li><a class=\"nav-item nav-link btn\" href=\"profile.php\">Profile</a></li>";}
             if ($access == 'W'){echo "<li><a class=\"nav-item nav-link btn\" href=\"profile.php\">Profile</a></li>";}
             if ($access == 'M'){echo "<li><a class=\"nav-item nav-link btn\" href=\"profile.php\">Profile</a></li>";}
