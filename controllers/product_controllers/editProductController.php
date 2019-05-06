@@ -56,11 +56,7 @@
     } 
 
     // getting product image
-    if (strlen($_POST["pImage"]) > 0) {
-        $pImage = mysqli_real_escape_string($mysqli, $_POST['pImage']);
-        $editedAttributeCount > 0 ? $editProductSql .= ", pImage='$pImage'" : $editProductSql .= "pImage='$pImage'"; 
-        $editedAttributeCount++;
-        
+    if (strlen($_FILES["pImage"]) > 0) {
         // getting the category of item
         if ($category == "Static") {
             $categoryDir = 'static';
@@ -74,37 +70,40 @@
             $categoryDir = 'hybrid';
         }
 
-        /*
-        $targetDir = "assets/products/$categoryDir";
-        $targetFile = $target_dir . basename($_FILES["pImage"]["name"]);
-        $uploadOk = 1;
-        $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+        // uploading image
+        $file = mysqli_real_escape_string($mysqli, $_FILES['pImage']);
+        $fileName = $_FILES['pImage']['name'];
+        $fileTmpName = $_FILES['pImage']['tmp_name'];
+        $fileSize = $_FILES['pImage']['size'];
+        $fileError = $_FILES['pImage']['error'];
+        $fileType = $_FILES['pImage']['type'];
 
-        // Check if image file is a actual image or fake image
-        if(isset($_POST["submit"])) {
-            $check = getimagesize($_FILES["pImage"]["tmp_name"]);
-            if($check !== false) {
-                echo "File is an image - " . $check["mime"] . ".";
-                $uploadOk = 1;
+        $fileExt = explode('.', $fileName);
+        $fileActualExt = strtolower(end($fileExt));
+
+        $filesAllowed = array('jpg', 'jpeg', 'png', 'pdf');
+        $uploadResult = "";
+        if (in_array($fileActualExt, $filesAllowed)) {
+            if ($fileError === 0) {
+                if ($fileSize < 1000000) {
+                    $fileNewName = uniqid($categoryDir, false).".".$fileActualExt;
+                    $fileDestination = "../../assets/products/$categoryDir/".$fileNewName;
+                    $fileUploadedDestination = "../assets/products/$categoryDir/".$fileNewName;
+
+                    move_uploaded_file($fileTmpName, $fileDestination);
+                    $uploadResult = "add_product_upload_success";
+                } else {
+                    $uploadResult = "add_product_err_file_too_big";
+                }
             } else {
-                echo "File is not an image.";
-                $uploadOk = 0;
+                $uploadResult = "add_product_err";
             }
-        }
-
-        // Check if $uploadOk is set to 0 by an error
-        if ($uploadOk == 0) {
-            echo "Sorry, your file was not uploaded.";
-        // if everything is ok, try to upload file
         } else {
-            if (move_uploaded_file($_FILES["pImage"]["tmp_name"], $target_file)) {
-                echo "The file ". basename( $_FILES["pImage"]["name"]). " has been uploaded.";
-            } else {
-                echo "Sorry, there was an error uploading your file.";
-            }
+            $uploadResult = "add_product_err_file_type";
         }
 
-        $pImage = addslashes(file_get_contents($_FILES['pImage']['tmp_name'])); */
+        $editedAttributeCount > 0 ? $editProductSql .= ", pImage='$fileUploadedDestination'" : $editProductSql .= "pImage='$fileUploadedDestination'"; 
+        $editedAttributeCount++;
     }
 
     // sql update

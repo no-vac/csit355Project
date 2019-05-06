@@ -11,7 +11,7 @@
                     echo '<h4 style="font-weight:normal;">Full Name: <b>'.$_SESSION['fName'].' '.$_SESSION['lName'].'</b></h4>';
                     echo '<h4 style="font-weight:normal;">Email: <b>'.$_SESSION['email'].'</b></h4>';
                     
-                    // CUSTOMER ACCESS
+                    // ADMIN, CUSTOMER ACCESS
                     if ($access == 'A' || $access == 'C') {
                         $access == 'C' ? $accessOut = "<h4 style=\"font-weight:normal\">My Orders:</h4>" : $accessOut = "<h4 style=\"font-weight:normal\">Orders:</h4>"; 
                         echo $accessOut;
@@ -91,7 +91,7 @@
                         }
                     }
 
-                     // SHOP MANAGER ACCESS
+                     // ADMIN, WEBMASTER, SHOP MANAGER ACCESS
                     if ($access == 'A' || $access == 'W' || $access == 'M') {
                         echo '<h4 style="font-weight:normal;">Products:</h4>';
 
