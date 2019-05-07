@@ -194,6 +194,13 @@
                         }
                         echo '</tbody></table></div>';
                     }
+
+                    echo '<h4 style="font-weight:normal;">Change Password:</h4>';
+                    echo '
+                    <form action="../controllers/changePassword.php" method="post">
+                        <input name="password" type="password" id="changePwdInput">
+                        <button id="changePwdBtn" type="submit">Change</button>
+                    </form>';
                 ?>
             </div>
         </div>

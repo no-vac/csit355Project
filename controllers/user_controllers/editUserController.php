@@ -42,5 +42,5 @@
     $editUserSql .= " WHERE id='$originalUser_id'";
     mysqli_query($mysqli, $editUserSql);
 
-    header("Location: ../../public_html/profile.php")
+    header("Location: ../../public_html/profile.php");
 ?>
