@@ -15,10 +15,12 @@
     $cart = getCart(); 
 
     $productId = mysqli_real_escape_string($mysqli, $_POST['productId']);
+    $price = mysqli_real_escape_string($mysqli, $_POST['price']);
     $quantity= $_POST['quantity'];
     $newitem = [
         "productId" => $productId,
-        "quantity" => $quantity 
+        "quantity" => $quantity,
+        "price" => $price
     ];
     
     if(in_array($newitem, $cart)) {

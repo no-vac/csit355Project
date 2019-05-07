@@ -53,6 +53,11 @@
                                 $filepath = $row['pImage'];
                                 $title = $row['pName'];
                                 $minOrder = $row['minOrder'];
+                                $price = $row['price'];
+                                // $stock = $row['stock'];
+                                // if($stock>0){
+                                //     include 'components/imageCard.php';
+                                // }
                                 include 'components/imageCard.php';
                             }   
                             echo "</div>";

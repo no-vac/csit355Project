@@ -1,8 +1,21 @@
 <?php
     require '../server/dbConnection.php';
+    include "./getCart.php";
+    $cart = getCart();
+
+    foreach ($cart as $prod){
+        $productId = $prod['productId'];
+        $quantity = $prod['quantity'];
+        $price = $prod['price'];
+        $total = $price * $quantity;
+
+        // PROCESS ORDER
+    }
+
+    // Submit total
 
     $didPurchase = true;
-    
+
     // variables that were commented out need to grab id from product (must do this in a form)
 
     /*

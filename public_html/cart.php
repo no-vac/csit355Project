@@ -5,8 +5,8 @@ function queryProduct($id) {
     $query = "SELECT * FROM products WHERE id=$id";
     return $query;
 }
-function getquant($id) {}
 ?>
+
 
 <html>
     <?php require 'components/header.php'; require '../controllers/access/checkUserAccess.php'; ?>
@@ -17,9 +17,30 @@ function getquant($id) {}
                 <h2>Cart 🛒</h2>
                 <?php
                     if(count($cart)){
+                        // foreach(array_column($cart, "productId") as $productId) {
+                        //     $result = $mysqli -> query(queryProduct($productId));
+                        //     echo "<div class=\"product\"><div class=\"store\">";
+                        //         while($row = $result -> fetch_assoc()){
+                        //             $productId = $row['id'];
+                        //             $filepath = $row['pImage'];
+                        //             $title = $row['pName'];
+                        //             $key=array_search($productId, array_column($cart, "productId"));
+                        //             $quantity=$cart[$key]["quantity"];
+                        //             include 'components/cartItem.php';
+                        //         }
+                        //         echo "</div></div>";
+                        // }
+
+                        echo "<hr class=\"mb-2\">
+                        <table style=\"width:100%\">
+                        <tr>
+                          <th><h3>Item</h3></th>
+                          <th><h3>Quantity</h3></th> 
+                          <th><h3>Price</h3></th>
+                        </tr>";
+                        $total=0;
                         foreach(array_column($cart, "productId") as $productId) {
                             $result = $mysqli -> query(queryProduct($productId));
-                            echo "<div class=\"product\"><div class=\"store\">";
                                 while($row = $result -> fetch_assoc()){
                                     $productId = $row['id'];
                                     $filepath = $row['pImage'];
@@ -27,10 +48,23 @@ function getquant($id) {}
                                     $minOrder = $row['minOrder'];
                                     $key=array_search($productId, array_column($cart, "productId"));
                                     $quantity=$cart[$key]["quantity"];
+                                    $price = $cart[$key]["price"];
+                                    echo "<tr>
+                                    <td>";
                                     include 'components/cartItem.php';
+                                    echo 
+                                    "</td>
+                                    <td><h5>$quantity x $$price</h5></td>
+                                    <td><h5>$".$quantity*$price."</h5></td>
+                                  </tr>";
+                                  $total+=$quantity*$price;
                                 }
-                                echo "</div></div>";
                         }
+                        echo "</table>
+                        <h3 class=\"mt-4\">Subtotal = $$total</h3>";
+
+                        echo"<hr class=\"mb-2\"><h2>Order Summary</h2>";
+
                     include 'components/checkout.php';
                 } else {
                     echo "<div class=\"mt-4 alert alert-info\" role=\"alert\">Your Cart is empty!</div>";
