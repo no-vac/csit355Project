@@ -14,7 +14,7 @@
         $findProductResult = mysqli_query($mysqli, $findProductSql);
         $findProductRow = $findProductResult -> fetch_assoc();
 
-        $oldQuantity = $findProductRow['quantity'];
+        $oldQuantity = $findProductRow['stock'];
         $pName = $findProductRow['pName'];
         $pDescription = $findProductRow['pDescription'];
         $category = $findProductRow['category'];
