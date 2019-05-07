@@ -23,6 +23,8 @@
                             $stock = $searchRow['stock'];
                             if($stock > 0) {
                                 include 'components/imageCard.php';
+                            }else if($access=='A'){
+                                include 'components/imageCard.php';
                             }
                         }   
                         echo "</div>";
