@@ -17,7 +17,7 @@ CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 CREATE TABLE IF NOT EXISTS products(
     id INT AUTO_INCREMENT,
     pName VARCHAR(30) NOT NULL,
-    quantity INT(3),
+    stock INT(3),
     pDescription VARCHAR(60) NOT NULL,
     category VARCHAR(20) NOT NULL,
     price FLOAT(5,2),
