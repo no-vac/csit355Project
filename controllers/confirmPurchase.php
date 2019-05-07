@@ -1,11 +1,22 @@
 <?php
     require '../server/dbConnection.php';
+    include "./getCart.php";
+    $cart = getCart();
 
-    $email = mysqli_real_escape_string($mysqli, $_POST['email']);
-    $idSql  = "SELECT id FROM `users` WHERE email='$email'";
-    $idResultSize = mysqli_query($mysqli, $idSql);
-    $idRowSize = $idResultSize -> fetch_assoc();
-    $user_id = $userRow["id"];
+    foreach ($cart as $prod){
+        $productId = $prod['productId'];
+        $quantity = $prod['quantity'];
+        $price = $prod['price'];
+        $total = $price * $quantity;
+
+        // PROCESS ORDER
+    }
+
+    // Submit total
+
+
+
+
 
     // variables that were commented out need to grab id from product (must do this in a form)
 

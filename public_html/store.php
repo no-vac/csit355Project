@@ -52,6 +52,11 @@
                                 $productId = $row['id'];
                                 $filepath = $row['pImage'];
                                 $title = $row['pName'];
+                                $price = $row['price'];
+                                // $stock = $row['stock'];
+                                // if($stock>0){
+                                //     include 'components/imageCard.php';
+                                // }
                                 include 'components/imageCard.php';
                             }   
                             echo "</div>";

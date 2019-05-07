@@ -1,5 +1,12 @@
 <?php $thisPage = 'Home'; ?>
-
+<?php
+function genrand($min,$max){
+  $randNums = range(6, 10);
+  shuffle($randNums);
+  array_slice($randNums, 0, 2);
+  return $randNums;
+}
+?>
 <html>
     <?php require 'components/header.php'; ?>
     <body>

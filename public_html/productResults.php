@@ -18,7 +18,10 @@
                             $productId = $searchRow['id'];
                             $filepath = $searchRow['pImage'];
                             $title = $searchRow['pName'];
-                            include 'components/imageCard.php';
+                            $stock = $searchRow['stock'];
+                            if($stock>0){
+                                include 'components/imageCard.php';
+                            }
                         }   
                         echo "</div>";
                     } else {
