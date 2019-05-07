@@ -1,8 +1,7 @@
 <?php $thisPage = 'Profile'; ?>
 
 <html>
-    <?php require 'components/header.php'; require '../controllers/access/checkUserAccess.php';
-    ?>
+    <?php require 'components/header.php'; require '../controllers/access/checkUserAccess.php'; ?>
     <body>
         <?php require 'components/nav.php'; ?>
         <div class="container-fluid">
@@ -12,7 +11,8 @@
                     echo '<h4 style="font-weight:normal;">Full Name: <b>'.$_SESSION['fName'].' '.$_SESSION['lName'].'</b></h4>';
                     echo '<h4 style="font-weight:normal;">Email: <b>'.$_SESSION['email'].'</b></h4>';
                     
-                    if ($access == 'A' || $access == 'C') { // CUSTOMER ACCESS
+                    // ADMIN, CUSTOMER ACCESS
+                    if ($access == 'A' || $access == 'C') {
                         $access == 'C' ? $accessOut = "<h4 style=\"font-weight:normal\">My Orders:</h4>" : $accessOut = "<h4 style=\"font-weight:normal\">Orders:</h4>"; 
                         echo $accessOut;
 
@@ -90,7 +90,9 @@
                             echo '<h5 style="font-weight:normal;">No orders present.</h5>';
                         }
                     }
-                    if ($access == 'A' || $access == 'W' || $access == 'M') { // SHOP MANAGER ACCESS
+
+                     // ADMIN, WEBMASTER, SHOP MANAGER ACCESS
+                    if ($access == 'A' || $access == 'W' || $access == 'M') {
                         echo '<h4 style="font-weight:normal;">Products:</h4>';
 
                         /* add, delete, edit product */
@@ -145,11 +147,6 @@
                             $value++;
                         }
                         echo '</tbody></table></div>';
-                    }
-                    
-                    // WEBMASTER ACCESS
-                    if ($access == 'A' || $access == 'W') {
-
                     }
                     
                     // ADMIN ACCESS

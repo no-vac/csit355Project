@@ -14,7 +14,7 @@
         $categoryDir = 'static';
     } else if ($category == "Multi-Screen") {
         $categoryDir = 'multi-screen';
-    } else if ($category == "live") {
+    } else if ($category == "Live") {
         $categoryDir = 'live';
     } else if ($category == "Interactive") {
         $categoryDir = 'interactive';
@@ -22,43 +22,40 @@
         $categoryDir = 'hybrid';
     }
 
-    if (isset($_POST["pImage"])) {
-        $file = $_FILES['file'];
+    // uploading image
+    $file = mysqli_real_escape_string($mysqli, $_FILES['pImage']);
+    $fileName = $_FILES['pImage']['name'];
+    $fileTmpName = $_FILES['pImage']['tmp_name'];
+    $fileSize = $_FILES['pImage']['size'];
+    $fileError = $_FILES['pImage']['error'];
+    $fileType = $_FILES['pImage']['type'];
 
-        // getting the file information
-        $fileName = $_FILES['file']['name'];
-        $fileTmpName = $_FILES['file']['tmp_name'];
-        $fileSize = $_FILES['file']['size'];
-        $fileError = $_FILES['file']['error'];
-        $fileType = $_FILES['file']['type'];
+    $fileExt = explode('.', $fileName);
+    $fileActualExt = strtolower(end($fileExt));
 
-        $fileExt = explode('.', $fileName);
-        $fileActualExt = strtolower(end($fileExt));
+    $filesAllowed = array('jpg', 'jpeg', 'png', 'pdf');
+    $uploadResult = "";
+    if (in_array($fileActualExt, $filesAllowed)) {
+        if ($fileError === 0) {
+            if ($fileSize < 1000000) {
+                $fileNewName = uniqid($categoryDir, false).".".$fileActualExt;
+                $fileDestination = "../../assets/products/$categoryDir/".$fileNewName;
+                $fileUploadedDestination = "../assets/products/$categoryDir/".$fileNewName;
 
-        $filesAllowed = array('jpg', 'jpeg', 'png', 'pdf');
-        $uploadResult = "";
-        if (in_array($fileActualExt, $filesAllowed)) {
-            if ($fileError === 0) {
-                if ($fileSize < 1000000) {
-                    $fileNameNew = uniqid('', true).".".$fileActualExt;
-                    //$fileDestination = "../assets/products/$categoryDir";
-                    $fileDestinationFile = "uploads/".$fileNameNew;
-
-                    move_uploaded_file($fileTmpName, $fileDestinationFile);
-                    $uploadResult = "add_product_upload_success";
-                } else {
-                    $uploadResult = "add_product_err_file_too_big";
-                }
+                move_uploaded_file($fileTmpName, $fileDestination);
+                $uploadResult = "add_product_upload_success";
             } else {
-                $uploadResult = "add_product_err";
+                $uploadResult = "add_product_err_file_too_big";
             }
         } else {
-            $uploadResult = "add_product_err_file_type";
+            $uploadResult = "add_product_err";
         }
+    } else {
+        $uploadResult = "add_product_err_file_type";
     }
 
     // sql insert
-    $addProductSql = "INSERT INTO products(pName, quantity, pDescription, category, price, tax, minOrder, pImage) VALUES('$pName', $quantity, '$pDescription', '$category', $price, $tax, $minOrder, '$fileDestinationFile')";
+    $addProductSql = "INSERT INTO products(pName, quantity, pDescription, category, price, tax, minOrder, pImage) VALUES('$pName', $quantity, '$pDescription', '$category', $price, $tax, $minOrder, '$fileUploadedDestination')";
     mysqli_query($mysqli, $addProductSql);
 
     header("Location: ../../public_html/profile.php?".$uploadResult."");

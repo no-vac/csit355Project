@@ -1,12 +1,13 @@
 <?php
-                    function queryProduct($id){
-                        $query = "SELECT * FROM products WHERE id=$id";
-                        return $query;
-                    }
-                    function getquant($id){
-                    }
-                ?>
-<?php $thisPage = 'Cart'; ?>
+$thisPage = 'Cart'; 
+
+function queryProduct($id) {
+    $query = "SELECT * FROM products WHERE id=$id";
+    return $query;
+}
+function getquant($id) {}
+?>
+
 <html>
     <?php require 'components/header.php'; require '../controllers/access/checkUserAccess.php'; ?>
     <body>
@@ -30,10 +31,8 @@
                                 echo "</div></div>";
                         }
                     include 'components/checkout.php';
-                }else{
-                    echo "<div class=\"alert alert-info\" role=\"alert\">
-                    Your Cart is empty!
-                  </div>";
+                } else {
+                    echo "<div class=\"mt-4 alert alert-info\" role=\"alert\">Your Cart is empty!</div>";
                 }
                 ?>
 
