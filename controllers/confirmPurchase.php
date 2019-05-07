@@ -1,39 +1,37 @@
 <?php
     require '../server/dbConnection.php';
+    require '../public_html/components/header.php';
     include "./getCart.php";
     $cart = getCart();
 
-    foreach ($cart as $prod){
+    foreach ($cart as $prod) {
         $productId = $prod['productId'];
         $quantity = $prod['quantity'];
         $price = $prod['price'];
-        $total = $price * $quantity;
+        $finalPrice = $price * $quantity;
 
-        // PROCESS ORDER
+        $findProductSql  = "SELECT * FROM `products` WHERE id=$productId";
+        $findProductResult = mysqli_query($mysqli, $findProductSql);
+        $findProductRow = $findProductResult -> fetch_assoc();
+
+        $oldQuantity = $findProductRow['quantity'];
+        $pName = $findProductRow['pName'];
+        $pDescription = $findProductRow['pDescription'];
+        $category = $findProductRow['category'];
+        $userId = $_SESSION['uid'];
+        $orderStatus = "Processing";
+        date_default_timezone_set("America/New_York");
+        $orderTimeStamp = date("Y-m-d H:i:s");
+        $pImage = $findProductRow['pImage'];
+
+        $purhcaseOrderSql = "INSERT INTO orders(pName, quantity, pDescription, category, price, userId, orderStatus, orderTimeStamp, pImage) VALUES('$pName', $quantity, '$pDescription', '$category', $finalPrice, $userId, '$orderStatus', '$orderTimeStamp', '$pImage')";
+        mysqli_query($mysqli, $purhcaseOrderSql);
+
+        // subtracting stock
+        $newStock = $oldQuantity - $quantity;
+        $subtractStockSql = "UPDATE products SET stock='$newStock' WHERE id=$productId";
+        mysqli_query($mysqli, $subtractStockSql);
     }
-
-    // Submit total
-
-    $didPurchase = true;
-
-    // variables that were commented out need to grab id from product (must do this in a form)
-
-    /*
-    $pName = mysqli_real_escape_string($mysqli, $_POST['email']);
-    $quantity = mysqli_real_escape_string($mysqli, $_POST['email']);
-    $pDescription = mysqli_real_escape_string($mysqli, $_POST['email']);
-    $category = mysqli_real_escape_string($mysqli, $_POST['email']);
-    $price = mysqli_real_escape_string($mysqli, $_POST['email']);
-    */
-    $userId = mysqli_real_escape_string($mysqli, $user_id);
-    /*
-    $orderStatus = mysqli_real_escape_string($mysqli, $_POST['email']);
-    // $orderTimeStamp = mysqli_real_escape_string($mysqli, $_POST['email']);
-    $pImage = mysqli_real_escape_string($mysqli, $_POST['email']);
-    */
-
-    $purhcaseOrderSql = "INSERT INTO orders(pName, quantity, pDescription, category, price, userId, orderStatus, orderTimeStamp, pImage) VALUES('$pName', $quantity, '$pDescription', '$category', $price, $userId, '$orderStatus', '$orderTimeStamp', '$pImage')";
-    mysqli_query($mysqli, $addOrderSql);
 
     header("Location: ../public_html/completedOrder.php");
 ?>

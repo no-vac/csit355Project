@@ -1,4 +1,5 @@
 <?php
+    
     echo "
         <div class=\"product text-center\" style=\"width:auto\">
             <form class=\"product\" action=\"../controllers/addToCart.php\" method=\"post\" style=\"width:200px\">
