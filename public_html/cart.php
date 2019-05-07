@@ -6,8 +6,6 @@ function queryProduct($id) {
     return $query;
 }
 ?>
-
-
 <html>
     <?php require 'components/header.php'; require '../controllers/access/checkUserAccess.php'; ?>
     <body>
@@ -17,20 +15,6 @@ function queryProduct($id) {
                 <h2>Cart 🛒</h2>
                 <?php
                     if(count($cart)){
-                        // foreach(array_column($cart, "productId") as $productId) {
-                        //     $result = $mysqli -> query(queryProduct($productId));
-                        //     echo "<div class=\"product\"><div class=\"store\">";
-                        //         while($row = $result -> fetch_assoc()){
-                        //             $productId = $row['id'];
-                        //             $filepath = $row['pImage'];
-                        //             $title = $row['pName'];
-                        //             $key=array_search($productId, array_column($cart, "productId"));
-                        //             $quantity=$cart[$key]["quantity"];
-                        //             include 'components/cartItem.php';
-                        //         }
-                        //         echo "</div></div>";
-                        // }
-
                         echo "<hr class=\"mb-2\">
                         <table style=\"width:100%\">
                         <tr>
@@ -49,6 +33,7 @@ function queryProduct($id) {
                                     $key=array_search($productId, array_column($cart, "productId"));
                                     $quantity=$cart[$key]["quantity"];
                                     $price = $cart[$key]["price"];
+                                    $description = $row['pDescription'];
                                     echo "<tr>
                                     <td>";
                                     include 'components/cartItem.php';
