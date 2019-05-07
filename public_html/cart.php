@@ -1,12 +1,13 @@
 <?php
-                    function queryProduct($id){
-                        $query = "SELECT * FROM products WHERE id=$id";
-                        return $query;
-                    }
-                    function getquant($id){
-                    }
-                ?>
-<?php $thisPage = 'Cart'; ?>
+$thisPage = 'Cart'; 
+
+function queryProduct($id) {
+    $query = "SELECT * FROM products WHERE id=$id";
+    return $query;
+}
+function getquant($id) {}
+?>
+
 <html>
     <?php require 'components/header.php'; require '../controllers/access/checkUserAccess.php'; ?>
     <body>
