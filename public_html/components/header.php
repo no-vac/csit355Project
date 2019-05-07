@@ -3,6 +3,7 @@
   session_start();
   require '../controllers/access/getAccess.php';
   $mysqli -> set_charset("utf8");
+  setlocale(LC_MONETARY,"en_US");
   ?>
 
 <head>
