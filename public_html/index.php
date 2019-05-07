@@ -54,7 +54,10 @@ function genrand($min,$max){
                                 $price = $row['price'];
                                 $title = $row['pName'];
                                 $minOrder = $row['minOrder'];
-                                include 'components/imageCard.php';
+                                $stock = $row['stock'];
+                                if($stock>0){
+                                  include 'components/imageCard.php';
+                                }
                             }
                         ?>
                         </div>
@@ -75,7 +78,10 @@ function genrand($min,$max){
                                     $price = $row['price'];
                                     $title = $row['pName'];
                                     $minOrder = $row['minOrder'];
-                                    include 'components/imageCard.php';
+                                    $stock = $row['stock'];
+                                    if($stock>0){
+                                      include 'components/imageCard.php';
+                                    }
                                 }
                           ?>
                         </div>
@@ -96,7 +102,10 @@ function genrand($min,$max){
                                     $price = $row['price'];
                                     $title = $row['pName'];
                                     $minOrder = $row['minOrder'];
-                                    include 'components/imageCard.php';
+                                    $stock = $row['stock'];
+                                    if($stock>0){
+                                      include 'components/imageCard.php';
+                                    }
                                 }
                           ?>
                         </div>
@@ -117,7 +126,10 @@ function genrand($min,$max){
                                     $price = $row['price'];
                                     $title = $row['pName'];
                                     $minOrder = $row['minOrder'];
-                                    include 'components/imageCard.php';
+                                    $stock = $row['stock'];
+                                    if($stock>0){
+                                      include 'components/imageCard.php';
+                                    }
                                 }
                           ?>
                         </div>
@@ -138,7 +150,10 @@ function genrand($min,$max){
                                     $price = $row['price'];
                                     $title = $row['pName'];
                                     $minOrder = $row['minOrder'];
-                                    include 'components/imageCard.php';
+                                    $stock = $row['stock'];
+                                    if($stock>0){
+                                      include 'components/imageCard.php';
+                                    }
                                 }
                           ?>
                         </div>

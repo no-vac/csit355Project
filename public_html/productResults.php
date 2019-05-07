@@ -19,6 +19,7 @@
                             $filepath = $searchRow['pImage'];
                             $title = $searchRow['pName'];
                             $minOrder = $searchRow['minOrder'];
+                            $price = $searchRow['price'];
                             $stock = $searchRow['stock'];
                             if($stock > 0) {
                                 include 'components/imageCard.php';
