@@ -113,7 +113,7 @@
                                     <thead class="thead-dark">
                                         <tr class=\'productsTableRow\'> 
                                             <th scope="col" class=\'productsHeader\'>Product Name</th> 
-                                            <th scope="col" class=\'productsHeader\'>Quantity</th> 
+                                            <th scope="col" class=\'productsHeader\'>Stock</th> 
                                             <th scope="col" class=\'productsHeader\'>Description</th> 
                                             <th scope="col" class=\'productsHeader\'>Category</th> 
                                             <th scope="col" class=\'productsHeader\'>Price</th> 
@@ -126,7 +126,7 @@
                         $value = 1;
                         while ($productRow = $productResult -> fetch_assoc()) {
                             $pName_product = $productRow["pName"];
-                            $quantity_product = $productRow["quantity"];
+                            $stock_product = $productRow["stock"];
                             $pDescription_product = $productRow["pDescription"];
                             $category_product = $productRow["category"];
                             $price_product = $productRow["price"];
@@ -136,7 +136,7 @@
 
                             echo '<tr class=\'row'.$value.'\' value='.$value.'> 
                                     <td scope="row" class=\'pName'.$value.'\' value='.$value.'>'.$pName_product.'</td> 
-                                    <td class=\'quantity'.$value.'\' value='.$value.'>'.$quantity_product.'</td> 
+                                    <td class=\'stock'.$value.'\' value='.$value.'>'.$stock_product.'</td> 
                                     <td class=\'pDescription'.$value.'\' value='.$value.'>'.$pDescription_product.'</td> 
                                     <td class=\'category'.$value.'\' value='.$value.'>'.$category_product.'</td>
                                     <td class=\'price'.$value.'\' value='.$value.'>'.$price_product.'</td> 
@@ -194,6 +194,13 @@
                         }
                         echo '</tbody></table></div>';
                     }
+
+                    echo '<h4 style="font-weight:normal;">Change Password:</h4>';
+                    echo '
+                    <form action="../controllers/changePassword.php" method="post">
+                        <input name="password" type="password" id="changePwdInput">
+                        <button id="changePwdBtn" type="submit">Change</button>
+                    </form>';
                 ?>
             </div>
         </div>

@@ -2,7 +2,7 @@
     require '../../server/dbConnection.php';
 
     $pName = mysqli_real_escape_string($mysqli, $_POST['pName']);
-    $quantity = mysqli_real_escape_string($mysqli, $_POST['quantity']);
+    $stock = mysqli_real_escape_string($mysqli, $_POST['stock']);
     $pDescription = mysqli_real_escape_string($mysqli, $_POST['pDescription']);
     $category = mysqli_real_escape_string($mysqli, $_POST['category']);
     $price = mysqli_real_escape_string($mysqli, $_POST['price']);
@@ -55,7 +55,7 @@
     }
 
     // sql insert
-    $addProductSql = "INSERT INTO products(pName, quantity, pDescription, category, price, tax, minOrder, pImage) VALUES('$pName', $quantity, '$pDescription', '$category', $price, $tax, $minOrder, '$fileUploadedDestination')";
+    $addProductSql = "INSERT INTO products(pName, stock, pDescription, category, price, tax, minOrder, pImage) VALUES('$pName', $stock, '$pDescription', '$category', $price, $tax, $minOrder, '$fileUploadedDestination')";
     mysqli_query($mysqli, $addProductSql);
 
     header("Location: ../../public_html/profile.php?".$uploadResult."");

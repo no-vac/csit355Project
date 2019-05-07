@@ -52,6 +52,7 @@
                                 $productId = $row['id'];
                                 $filepath = $row['pImage'];
                                 $title = $row['pName'];
+                                $minOrder = $row['minOrder'];
                                 $price = $row['price'];
                                 // $stock = $row['stock'];
                                 // if($stock>0){

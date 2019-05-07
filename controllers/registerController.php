@@ -18,8 +18,7 @@
         $registerUserQuery = "INSERT INTO users (fName, lName, email, password)"."VALUES('$fName', '$lName', '$email', '$password')";
         
         if ($mysqli -> query($registerUserQuery)) {
-            $_SESSION['logged_in'] = true;
-            header("Location: profile.php");
+            header("Location: login.php");
         }
         else {
             $_SESSION['message'] = 'Unable to register!';

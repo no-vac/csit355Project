@@ -18,8 +18,9 @@
                             $productId = $searchRow['id'];
                             $filepath = $searchRow['pImage'];
                             $title = $searchRow['pName'];
+                            $minOrder = $searchRow['minOrder'];
                             $stock = $searchRow['stock'];
-                            if($stock>0){
+                            if($stock > 0) {
                                 include 'components/imageCard.php';
                             }
                         }   

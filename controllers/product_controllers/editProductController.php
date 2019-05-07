@@ -12,9 +12,9 @@
         $editedAttributeCount++;
     }
     
-    if (strlen($_POST["quantity"]) > 0) {
-        $quantity = mysqli_real_escape_string($mysqli, $_POST['quantity']);
-        $editedAttributeCount > 0 ? $editProductSql .= ", quantity='$quantity'" : $editProductSql .= "quantity='$quantity'";
+    if (strlen($_POST["stock"]) > 0) {
+        $stock = mysqli_real_escape_string($mysqli, $_POST['stock']);
+        $editedAttributeCount > 0 ? $editProductSql .= ", stock='$stock'" : $editProductSql .= "stock='$stock'";
         $editedAttributeCount++;
     }
 

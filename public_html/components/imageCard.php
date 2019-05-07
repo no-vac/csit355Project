@@ -10,7 +10,7 @@
                 if ($access != null) { 
                     echo "
                     <button name=\"addToCartBtn\" class=\"btn btn-sm btn-primary \" type=\"submit\">Add to Cart</button>
-                    <input class=\"prod-quantity align-middle\" name=\"quantity\" type=\"number\" id=\"1\" value=\"1\" min=\"1\" max=\"10\"/>
+                    <input class=\"prod-quantity align-middle\" name=\"quantity\" type=\"number\" id=\"1\" value=\"$minOrder\" min=\"$minOrder\" max=\"99\"/>
                     ";
                 }
     echo "</form></div>";
