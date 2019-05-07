@@ -23,6 +23,7 @@ function queryProduct($id) {
                           <th><h3>Price</h3></th>
                         </tr>";
                         $total=0;
+                        $taxtotal=0;
                         foreach(array_column($cart, "productId") as $productId) {
                             $result = $mysqli -> query(queryProduct($productId));
                                 while($row = $result -> fetch_assoc()){
@@ -33,6 +34,7 @@ function queryProduct($id) {
                                     $key=array_search($productId, array_column($cart, "productId"));
                                     $quantity=$cart[$key]["quantity"];
                                     $price = $cart[$key]["price"];
+                                    $tax = $row['tax'];
                                     $description = $row['pDescription'];
                                     echo "<tr>
                                     <td>";
@@ -42,13 +44,27 @@ function queryProduct($id) {
                                     <td><h5>$quantity x $$price</h5></td>
                                     <td><h5>$".$quantity*$price."</h5></td>
                                   </tr>";
+                                  $_total=$quantity*$price;
                                   $total+=$quantity*$price;
                                 }
                         }
                         echo "</table>
                         <h3 class=\"mt-4\">Subtotal = $$total</h3>";
 
-                        echo"<hr class=\"mb-2\"><h2>Order Summary</h2>";
+                        echo "<hr class=\"mb-2\"><h2>Order Summary</h2>
+                        <table style=\"width:20%\">
+                            <tr>
+                                <td>Item(s) Subtotal:</td>
+                                <td>$$total</td>
+                            </tr>
+                            <tr>
+                                <td>Estimated tax to be:</td>
+                                <td>$".round($total*$tax,2)."
+                            </tr>
+                            <tr>
+                                <td><strong>Grand Total:</strong></td>
+                                <td><strong>$".round($total+$total*$tax,2)."</strong></td>
+                        </table>";
 
                     include 'components/checkout.php';
                 } else {
