@@ -54,22 +54,24 @@
         $editedAttributeCount++;
     }
 
-    // getting order image
-    if (strlen($_FILES["pImage"]) > 0) {
-        // getting the category of item
-        if ($category == "Static") {
+    if (isset($_FILES["pImage"])) {
+        $currentCategorySql = "SELECT category FROM orders WHERE id='$original_pNameId'";
+        $currentCategoryResult = mysqli_query($mysqli, $currentCategorySql);
+        $currentCategoryRow = mysqli_fetch_assoc($currentCategoryResult);
+        $currentCategory = implode($currentCategoryRow);
+        
+        if ($currentCategory == "Static") {
             $categoryDir = 'static';
-        } else if ($category == "Multi-Screen") {
+        } else if ($currentCategory == "Multi-Screen") {
             $categoryDir = 'multi-screen';
-        } else if ($category == "live") {
+        } else if ($currentCategory == "live") {
             $categoryDir = 'live';
-        } else if ($category == "Interactive") {
+        } else if ($currentCategory == "Interactive") {
             $categoryDir = 'interactive';
-        } else if ($category == "Hybrid") {
+        } else if ($currentCategory == "Hybrid") {
             $categoryDir = 'hybrid';
         }
 
-        // uploading image
         $file = mysqli_real_escape_string($mysqli, $_FILES['pImage']);
         $fileName = $_FILES['pImage']['name'];
         $fileTmpName = $_FILES['pImage']['tmp_name'];
@@ -88,7 +90,7 @@
                     $fileNewName = uniqid($categoryDir, false).".".$fileActualExt;
                     $fileDestination = "../../assets/products/$categoryDir/".$fileNewName;
                     $fileUploadedDestination = "../assets/products/$categoryDir/".$fileNewName;
-
+    
                     move_uploaded_file($fileTmpName, $fileDestination);
                     $uploadResult = "add_product_upload_success";
                 } else {
@@ -100,6 +102,12 @@
         } else {
             $uploadResult = "add_product_err_file_type";
         }
+        
+        $orderImagePathSql = "SELECT pImage FROM orders WHERE id='$original_pNameId'";
+        $orderImagePathResult = mysqli_query($mysqli, $orderImagePathSql);
+        $orderImagePath = mysqli_fetch_assoc($orderImagePathResult);
+        $completeOrderImagePath = "../".implode($orderImagePath)."";
+        unlink($completeOrderImagePath);
 
         $editedAttributeCount > 0 ? $editOrderSql .= ", pImage='$fileUploadedDestination'" : $editOrderSql .= "pImage='$fileUploadedDestination'"; 
         $editedAttributeCount++;
@@ -109,5 +117,5 @@
     $editOrderSql .= " WHERE id='$original_pNameId'";
     mysqli_query($mysqli, $editOrderSql);
 
-    header("Location: ../../public_html/profile.php")
+    header("Location: ../../public_html/profile.php?".$uploadResult."")
 ?>

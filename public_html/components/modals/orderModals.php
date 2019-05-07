@@ -138,7 +138,7 @@
                     </button>
                 </div>
 
-                <form class="modal-body" action="../controllers/order_controllers/editOrderController.php" method="post">
+                <form class="modal-body" action="../controllers/order_controllers/editOrderController.php" method="post" enctype="multipart/form-data">
                     <div class="mb-3">
                         <label for="editOrder_item">Which Order?</label>
                         <select name="original_pNameId" class="custom-select d-block w-100" id="original_pNameId" required>
