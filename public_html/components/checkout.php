@@ -1,10 +1,7 @@
 <?php
-    $test = 0;
     echo '
     <hr class="mb-4">
     <form class="needs-validation" action="../controllers/confirmPurchase.php" method="post" novalidate>
-        <input type="hidden" name="" value='.$test.'>
-    
         <h4 class="mb-3">Billing Address</h4>
         <div class="row">
             <div class="col-md-6 mb-3">

@@ -19,9 +19,9 @@
                         </div>
 
                         <div class="col-md-3 mb-3">
-                            <label for="addProduct_quantity">Quantity</label>
-                            <input name="quantity" type="number" class="form-control" id="quantity" placeholder="1" required>
-                            <div class="invalid-feedback">Please enter a valid quantity.</div>
+                            <label for="addProduct_stock">stock</label>
+                            <input name="stock" type="number" class="form-control" id="stock" placeholder="1" required>
+                            <div class="invalid-feedback">Please enter a valid stock.</div>
                         </div>
                     </div>
 
@@ -126,9 +126,9 @@
                         </div>
 
                         <div class="col-md-3 mb-3">
-                            <label for="editProduct_quantity">Quantity</label>
-                            <input name="quantity" type="number" class="form-control" id="quantity" placeholder="1">
-                            <div class="invalid-feedback">Please enter a valid quantity.</div>
+                            <label for="editProduct_stock">stock</label>
+                            <input name="stock" type="number" class="form-control" id="stock" placeholder="1">
+                            <div class="invalid-feedback">Please enter a valid stock.</div>
                         </div>
                     </div>
 

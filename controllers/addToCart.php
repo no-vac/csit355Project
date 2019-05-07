@@ -4,14 +4,13 @@
     session_start();
 
     function _exists($object, $property, $item){
-        foreach ($object->$property as $index){
-            if($index==$property){
+        foreach ($object -> $property as $index){
+            if($index == $property){
                 return true;
             }
         }
         return false;
     }
-
 
     $cart = getCart(); 
 
@@ -21,6 +20,7 @@
         "productId" => $productId,
         "quantity" => $quantity 
     ];
+    
     if(in_array($newitem, $cart)) {
         header("Location: ../public_html/store.php?err=1");
     } else {

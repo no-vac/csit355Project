@@ -44,8 +44,8 @@
                                 $row = $result -> fetch_assoc();
                                 $productId = $row['id'];
                                 $filepath = $row['pImage'];
-                                $productId = $row['id'];
                                 $title = $row['pName'];
+                                $minOrder = $row['minOrder'];
                                 include 'components/imageCard.php';
                             }
                         ?>
@@ -64,8 +64,8 @@
                                     $row = $result -> fetch_assoc();
                                     $productId = $row['id'];
                                     $filepath = $row['pImage'];
-                                    $productId = $row['id'];
                                     $title = $row['pName'];
+                                    $minOrder = $row['minOrder'];
                                     include 'components/imageCard.php';
                                 }
                           ?>
@@ -84,8 +84,8 @@
                                     $row = $result -> fetch_assoc();
                                     $productId = $row['id'];
                                     $filepath = $row['pImage'];
-                                    $productId = $row['id'];
                                     $title = $row['pName'];
+                                    $minOrder = $row['minOrder'];
                                     include 'components/imageCard.php';
                                 }
                           ?>
@@ -104,8 +104,8 @@
                                     $row = $result -> fetch_assoc();
                                     $productId = $row['id'];
                                     $filepath = $row['pImage'];
-                                    $productId = $row['id'];
                                     $title = $row['pName'];
+                                    $minOrder = $row['minOrder'];
                                     include 'components/imageCard.php';
                                 }
                           ?>
@@ -124,8 +124,8 @@
                                     $row = $result -> fetch_assoc();
                                     $productId = $row['id'];
                                     $filepath = $row['pImage'];
-                                    $productId = $row['id'];
                                     $title = $row['pName'];
+                                    $minOrder = $row['minOrder'];
                                     include 'components/imageCard.php';
                                 }
                           ?>

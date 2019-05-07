@@ -18,6 +18,7 @@
                             $productId = $searchRow['id'];
                             $filepath = $searchRow['pImage'];
                             $title = $searchRow['pName'];
+                            $minOrder = $row['minOrder'];
                             include 'components/imageCard.php';
                         }   
                         echo "</div>";

@@ -24,6 +24,7 @@ function getquant($id) {}
                                     $productId = $row['id'];
                                     $filepath = $row['pImage'];
                                     $title = $row['pName'];
+                                    $minOrder = $row['minOrder'];
                                     $key=array_search($productId, array_column($cart, "productId"));
                                     $quantity=$cart[$key]["quantity"];
                                     include 'components/cartItem.php';

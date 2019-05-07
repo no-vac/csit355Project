@@ -52,6 +52,7 @@
                                 $productId = $row['id'];
                                 $filepath = $row['pImage'];
                                 $title = $row['pName'];
+                                $minOrder = $row['minOrder'];
                                 include 'components/imageCard.php';
                             }   
                             echo "</div>";
