@@ -33,13 +33,13 @@
                     <div class="row">
                         <div class="col-md-9 mb-3">
                             <label for="addOrder_pName">Product Name</label>
-                            <input name="pName" type="text" class="form-control" id="pName" placeholder="Dreamy Clouds" required>
+                            <input name="pName" type="text" class="form-control" id="pName" required>
                             <div class="invalid-feedback">Please enter a valid order name.</div>
                         </div>
 
                         <div class="col-md-3 mb-3">
                             <label for="addOrder_quantity">Quantity</label>
-                            <input name="quantity" type="number" class="form-control" id="quantity" placeholder="1" required>
+                            <input name="quantity" type="number" class="form-control" id="quantity"  required>
                             <div class="invalid-feedback">Please enter a valid quantity.</div>
                         </div>
                     </div>
@@ -47,7 +47,7 @@
                     <div class="row">
                         <div class="col-md-8 mb-3">
                             <label for="addOrder_pDescription">Order Description</label>
-                            <input name="pDescription" type="text" class="form-control" id="pDescription" placeholder="This background is for those who look to the skies." required>
+                            <input name="pDescription" type="text" class="form-control" id="pDescription"  required>
                             <div class="invalid-feedback">Please enter a valid order description.</div>
                         </div>
 
@@ -75,7 +75,7 @@
 
                         <div class="col-md-6 mb-3">
                             <label for="addOrder_price">Price</label>
-                            <input name="price" type="decimal" class="form-control" id="price" placeholder="20.0" required>
+                            <input name="price" type="decimal" class="form-control" id="price"  required>
                             <div class="invalid-feedback">Please enter a valid price.</div>
                         </div>
                     </div>
@@ -83,7 +83,7 @@
                     <div class="row">
                         <div class="col-md-4 mb-3">
                             <label for="addOrder_orderStatus">Order Status</label>
-                            <input name="orderStatus" type="text" class="form-control" id="orderStatus" placeholder="Shipped" required>
+                            <input name="orderStatus" type="text" class="form-control" id="orderStatus"  required>
                             <div class="invalid-feedback">Please enter a valid order status.</div>
                         </div>
 
@@ -92,11 +92,6 @@
                             <input name="orderTimeStamp" type="datetime-local" class="form-control" id="orderTimeStamp" step="1" required>
                             <div class="invalid-feedback">Please enter a valid order time stamp.</div>
                         </div>
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="addOrder_pImage">Order Image</label>
-                        <input name="pImage" type="file" class="form-control" id="pImage" required>
                     </div>
 
                     <div class="modal-footer">
@@ -149,13 +144,13 @@
                     <div class="row">
                         <div class="col-md-9 mb-3">
                             <label for="editOrder_pName">Order Name</label>
-                            <input name="pName" type="text" class="form-control" id="pName" placeholder="Dreamy Clouds">
+                            <input name="pName" type="text" class="form-control" id="pName" >
                             <div class="invalid-feedback">Please enter a valid order name.</div>
                         </div>
 
                         <div class="col-md-3 mb-3">
                             <label for="editOrder_quantity">Quantity</label>
-                            <input name="quantity" type="number" class="form-control" id="quantity" placeholder="1">
+                            <input name="quantity" type="number" class="form-control" id="quantity" >
                             <div class="invalid-feedback">Please enter a valid quantity.</div>
                         </div>
                     </div>
@@ -163,7 +158,7 @@
                     <div class="row">
                         <div class="col-md-8 mb-3">
                             <label for="editOrder_pDescription">Order Description</label>
-                            <input name="pDescription" type="text" class="form-control" id="pDescription" placeholder="This background is for those who look to the skies.">
+                            <input name="pDescription" type="text" class="form-control" id="pDescription"">
                             <div class="invalid-feedback">Please enter a valid order description.</div>
                         </div>
 
@@ -191,7 +186,7 @@
 
                         <div class="col-md-6 mb-3">
                             <label for="editOrder_price">Price</label>
-                            <input name="price" type="decimal" class="form-control" id="price" placeholder="20.0">
+                            <input name="price" type="decimal" class="form-control" id="price">
                             <div class="invalid-feedback">Please enter a valid price.</div>
                         </div>
                     </div>
@@ -199,7 +194,7 @@
                     <div class="row">
                         <div class="col-md-4 mb-3">
                             <label for="editOrder_orderStatus">Order Status</label>
-                            <input name="orderStatus" type="text" class="form-control" id="orderStatus" placeholder="Shipped">
+                            <input name="orderStatus" type="text" class="form-control" id="orderStatus" >
                             <div class="invalid-feedback">Please enter a valid order status.</div>
                         </div>
 
@@ -208,11 +203,6 @@
                             <input name="orderTimeStamp" type="datetime-local" class="form-control" id="orderTimeStamp" step="1">
                             <div class="invalid-feedback">Please enter a valid order time stamp.</div>
                         </div>
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="editOrder_pImage">Order Image</label>
-                        <input name="pImage" type="file" class="form-control" id="pImage">
                     </div>
 
                     <div class="modal-footer">
