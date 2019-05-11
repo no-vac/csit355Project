@@ -49,12 +49,15 @@ require '../controllers/access/checkUserAccess.php'; ?>
                                     <td><h5>$" . $quantity * $price . "</h5></td>
                                   </tr>";
                         $_total = $quantity * $price;
-                        $taxammt = $tax;
+                        $taxammt = $tax * $quantity;
                         $taxtotal += $taxammt;
                         $subtotal += $_total;
+                        
                     }
                 }
-                $grandtotal = $subtotal + $taxtotal;
+                $_SESSION['subtotal']= $subtotal;
+                $_SESSION['taxammt']= $taxtotal;
+                $_SESSION['grandtotal'] = $subtotal + $taxtotal;
                 echo "</table>
                         <h3 class=\"mt-4\">Subtotal = $$subtotal</h3>";
 
@@ -70,7 +73,7 @@ require '../controllers/access/checkUserAccess.php'; ?>
                             </tr>
                             <tr>
                                 <td><strong>Grand Total:</strong></td>
-                                <td><strong>$" . round($grandtotal, 2) . "</strong></td>
+                                <td><strong>$" . round($_SESSION['grandtotal'], 2) . "</strong></td>
                         </table>";
 
                 include 'components/checkout.php';

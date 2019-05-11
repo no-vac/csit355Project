@@ -44,10 +44,11 @@
                         for ($x = 0; $x < count($categories); $x++) {
                             $result = $mysqli -> query($categoryQueries[$x]);
                             if($x==0){
-                                echo "<div class=\"tab-pane fade show active\" id=\"".$categoryIds[$x]."\" role=\"tabpanel\" aria-labelledby=\"".$categoryIdNavs[$x]."\">";
+                                echo "<div class=\"tab-pane fade show active \" id=\"".$categoryIds[$x]."\" role=\"tabpanel\" aria-labelledby=\"".$categoryIdNavs[$x]."\">";
                             }else{
-                                echo "<div class=\"tab-pane fade\" id=\"".$categoryIds[$x]."\" role=\"tabpanel\" aria-labelledby=\"".$categoryIdNavs[$x]."\">";
+                                echo "<div class=\"tab-pane fade \" id=\"".$categoryIds[$x]."\" role=\"tabpanel\" aria-labelledby=\"".$categoryIdNavs[$x]."\">";
                             }
+                            echo "<div class=\"row justify-content-center\">";
                             while($row = $result -> fetch_assoc()) {
                                 $productId = $row['id'];
                                 $filepath = $row['pImage'];
@@ -59,7 +60,7 @@
                                     include 'components/imageCard.php';
                                 }
                             }   
-                            echo "</div>";
+                            echo "</div></div>";
                         }
                     ?>
                 </div>
